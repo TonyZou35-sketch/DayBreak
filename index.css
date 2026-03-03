@@ -1,0 +1,2051 @@
+:root {
+  /* Daybreak Color Palette */
+  --color-primary: #39B15B;
+  --color-secondary: #B1D93C;
+  --color-accent: #3B9CD9;
+
+  --color-dark: #222222;
+  --color-light: #F6F6F6;
+  --color-grey-1: #383838;
+  --color-grey-2: #858585;
+  --color-grey-3: #D4D4D4;
+
+  --font-family: 'Manrope', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Navigation Bar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  height: 72px;
+  background-color: rgba(246, 246, 246, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  /* Subtly define the bottom edge */
+  border-bottom: 1px solid rgba(212, 212, 212, 0.2);
+}
+
+.navbar-left {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--color-dark);
+  /* Changed from grey-2 for contrast */
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+  /* Use primary green on hover for visibility */
+}
+
+.navbar-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* space between SVG and text */
+  text-decoration: none;
+  color: var(--color-dark);
+}
+
+.logo-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+  margin-bottom: 2px;
+  /* Fine-tune optical alignment */
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 40px;
+  /* highly rounded, pill shape */
+  height: 40px;
+  padding: 0 20px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-outline {
+  border: 1px solid var(--color-dark);
+  /* Ensure border is visible */
+  background-color: transparent;
+  color: var(--color-dark);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-dark);
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+
+.btn-solid {
+  background-color: var(--color-grey-1);
+  color: var(--color-light);
+  border: 1px solid var(--color-grey-1);
+  /* Add border to maintain size on hover invert */
+  gap: 8px;
+  padding-left: 16px;
+  /* slightly smaller padding on left if it has an icon */
+  padding-right: 20px;
+}
+
+.btn-solid:hover {
+  background-color: var(--color-light);
+  color: var(--color-grey-1);
+}
+
+/* Navbar Responsiveness */
+@media (max-width: 900px) {
+  .navbar-left {
+    display: none;
+    /* Hide links on tablet/mobile to prevent overlap */
+  }
+
+  .navbar-center {
+    /* When left nav is gone, ensure center is explicitly positioned against the left side to avoid weird gaps if desired, or keep centered. Let's keep it centered but ensure no overlap. */
+    left: 40px;
+    transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .navbar-center {
+    left: 20px;
+  }
+
+  .navbar-right {
+    gap: 8px;
+  }
+
+  .btn {
+    padding: 0 12px;
+    font-size: 12px;
+  }
+}
+
+.btn-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Invert SVG fill color on hover using CSS filter */
+.btn-solid:hover .btn-icon {
+  filter: invert(80%) sepia(2%) saturate(0%) hue-rotate(185deg) brightness(20%) contrast(90%);
+}
+
+/* Base content layer for testing sticky behavior */
+body {
+  overflow-x: hidden;
+  /* Prevent horizontal scroll from full-bleed bg */
+}
+
+/* Make nav bar start hidden and animate down */
+.navbar {
+  transform: translateY(-100%);
+  animation: navSlideDown 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: 2.0s;
+  /* Synchronize perfectly with hero-title */
+}
+
+@keyframes navSlideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Hero Section Base */
+.hero-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin-top: -72px;
+  /* Pull up under the navbar so background covers entire screen */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Background Wrapper */
+.hero-bg-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  /* Behind content */
+}
+
+.hero-base-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-light);
+  /* Initial white bg */
+}
+
+.hero-image-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* 
+    Stage 1: Starts as a 420px circle in center (radius 210px) 
+    Stage 2: Animates to fill viewport
+  */
+  clip-path: circle(210px at 50% 50%);
+  animation: bgExpand 1.6s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+  animation-delay: 1.0s;
+  /* Circle stands still for 1 second */
+}
+
+@keyframes bgExpand {
+  0% {
+    clip-path: circle(210px at 50% 50%);
+  }
+
+  100% {
+    clip-path: circle(200% at 50% 50%);
+    /* Arbitrarily large number to guarantee screen fill */
+  }
+}
+
+.bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* Rotate from an offset back to 0 perfectly at 1.2s exactly when circle expands */
+  animation: bgSpinIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes bgSpinIn {
+  0% {
+    transform: scale(1.2) rotate(-30deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Hero Overlay Content */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-logo-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Starts invisible and slightly scaled down */
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.85);
+  animation:
+    logoReveal 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards,
+    /* 0.4s to 0.8s (Snappy scale & fade) */
+    logoMoveUp 1.6s cubic-bezier(0.3, 0.0, 0.2, 1) forwards;
+  /* 1.0s to 2.6s (Moves with circle) */
+  animation-delay:
+    0.4s,
+    /* Wait 0.4s before snapping in */
+    1.0s;
+}
+
+.hero-anim-logo {
+  width: 90px;
+  height: 90px;
+  display: block;
+}
+
+@keyframes logoReveal {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes logoMoveUp {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+
+  100% {
+    transform: translate(-50%, calc(-50% - 140px));
+    /* Move it up above center */
+  }
+}
+
+.hero-title {
+  font-size: 16vw;
+  /* Huge responsive text */
+  font-weight: 700;
+  letter-spacing: -3px;
+  color: rgba(255, 255, 255, 0.76);
+  /* 76% opacity FFFFFF */
+
+  /* Initial state hidden below */
+  opacity: 0;
+  transform: translateY(60px);
+
+  /* Wait for bg to finish expanding, then slide up */
+  animation: titleReveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: 2.0s;
+}
+
+@keyframes titleReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(20px);
+    /* Settle slightly below absolute center */
+  }
+}
+
+/* =========================================
+   Section 1: Your Planning Model 
+   ========================================= */
+/* =========================================
+   Section 1: V2 Alternative Layout 
+   ========================================= */
+.pm-v2-container {
+  /* Exactly 120px gap from the section above (Hero) */
+  margin-top: 120px;
+  width: 100%;
+  /* Fill viewport width completely */
+  background-color: var(--color-light);
+  display: flex;
+  /* Flex handles asymmetrical columns well */
+  position: relative;
+  overflow: hidden;
+  /* Top padding ensures content doesn't crash against the upper bound in mobile */
+  padding: 0 0 120px 0;
+  isolation: isolate;
+  /* Create stacking context for z-index -1 lines */
+}
+
+/* Left Column - Text Focus */
+.pm-v2-left {
+  flex: 0 0 45%;
+  /* Takes 45% matching reference density */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: max(40px, calc(50vw - 720px));
+  /* Moved left significantly: aligns to the edge of a 1440px container */
+  padding-top: 50px;
+  /* Aligns visually with right side elements */
+  position: relative;
+  z-index: 10;
+}
+
+.pm-v2-logo {
+  width: 28px;
+  /* Significantly reduced size per reference */
+  height: auto;
+  margin-bottom: 25px;
+  /* Tighter gap before text per reference */
+  margin-left: -5px;
+  /* Slight optical adjustment to left align to 'Y' */
+}
+
+/* Typography styles based exactly on provided inline specs */
+.pm-v2-h1 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 57.6px;
+  color: var(--color-dark);
+  margin: 0 0 30px 0;
+  max-width: 475px;
+  letter-spacing: -0.5px;
+  /* Makes 'doesn't scale' feel tighter like reference */
+}
+
+/* Granular colored text spans */
+.color-sky {
+  color: #3B9CD9;
+}
+
+.color-sky-light {
+  color: #7BBCE4;
+}
+
+.color-dark {
+  color: #222222;
+}
+
+.color-green {
+  color: #39B15B;
+}
+
+.pm-v2-p {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  color: var(--color-dark);
+  max-width: 472px;
+  margin: 0 0 160px 0;
+  /* Significant gap before bottom text block to align with dashed lines */
+}
+
+/* Bottom text block with inline animated icon */
+.pm-v2-bottom-text {
+  margin-top: auto;
+}
+
+.pm-v2-bottom-text p {
+  font-family: 'Manrope', sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 38.4px;
+  color: var(--color-dark);
+  margin: 0;
+}
+
+.pm-v2-bottom-text strong {
+  font-weight: 700;
+}
+
+/* Endless Rotating Keyframe for the Union Icon */
+@keyframes continuousSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotating-icon {
+  width: 37px;
+  height: 37px;
+  /* Inline alignment tuning */
+  vertical-align: middle;
+  margin: 0 8px;
+  animation: continuousSpin 12s linear infinite;
+}
+
+/* Right Column - Image & Overlapping Cards */
+.pm-v2-right {
+  flex: 1;
+  /* Takes the remaining 55% */
+  position: relative;
+  /* Top aligns image perfectly with the title horizontally */
+  padding-top: 110px;
+  padding-right: max(40px, calc(50vw - 640px));
+  /* Proper padding bounds for content */
+  z-index: 10;
+}
+
+.pm-v2-img {
+  width: 100%;
+  max-width: 554px;
+  /* Matches Figma intrinsic width */
+  height: auto;
+  aspect-ratio: 554 / 439;
+  object-fit: cover;
+  display: block;
+  z-index: 1;
+  position: relative;
+  margin-left: auto;
+  /* Push to right align */
+}
+
+/* Overlapping Stat Boxes using Glassmorphism blur(20px) */
+.stat-box {
+  position: absolute;
+  width: 290px;
+  height: 160px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 2;
+}
+
+.stat-box.box-green {
+  background: rgba(217, 236, 152, 0.95);
+  /* Top-left overlap over image */
+  top: 40px;
+  /* Sits significantly higher per ref image */
+  left: 20px;
+  /* Pulls slightly off vertical center line */
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.stat-box.box-blue {
+  background: rgba(209, 230, 228, 0.95);
+  /* Bottom-right overlap near image bottom right */
+  bottom: 0px;
+  right: 0px;
+  left: auto;
+  /* overrides absolute positioning defaults */
+  /* Flush with absolute right margin of the screen */
+  align-items: flex-start;
+  /* Actually per ref: 50% left aligned */
+  gap: 20px;
+}
+
+.sb-label {
+  color: #383838;
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.sb-value {
+  color: #383838;
+  font-family: 'Manrope', sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 57.6px;
+}
+
+/* Right align the text block in green box */
+.box-green .sb-value {
+  align-self: stretch;
+  text-align: right;
+}
+
+/* =========================================
+   Decorative Edge-Tracing Architecture
+   ========================================= */
+.v2-grid-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  padding: 0 0 120px 0;
+  /* Match main container padding */
+  pointer-events: none;
+  z-index: 0;
+  /* Keep securely behind content */
+  /* Elegant oval gradient mask to fade grid lines at screen edges */
+  -webkit-mask-image: radial-gradient(ellipse at 85% 50%, black 5%, rgba(0, 0, 0, 0.6) 40%, transparent 65%);
+  mask-image: radial-gradient(ellipse at 85% 50%, black 5%, rgba(0, 0, 0, 0.6) 40%, transparent 65%);
+}
+
+.dummy-left {
+  flex: 0 0 45%;
+}
+
+.dummy-right {
+  flex: 1;
+  position: relative;
+  padding-top: 110px;
+  padding-right: max(40px, calc(50vw - 720px));
+}
+
+.dummy-img {
+  width: 100%;
+  max-width: 554px;
+  aspect-ratio: 554/439;
+  margin-left: auto;
+  position: relative;
+}
+
+.dummy-box-green {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  width: 290px;
+  height: 160px;
+}
+
+.dummy-box-blue {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 290px;
+  height: 160px;
+}
+
+/* The actual tracking lines extending from dummy elements */
+.ext-line {
+  position: absolute;
+  background: transparent;
+}
+
+/* Horizontal endless line */
+.ext-line.hl {
+  left: -200vw;
+  width: 400vw;
+  height: 0;
+  border-top: 1px dashed rgba(185, 185, 185, 0.45);
+}
+
+.ext-line.hl.solid {
+  border-top: 1px solid rgba(185, 185, 185, 0.7);
+}
+
+.ext-line.hl.top {
+  top: -1px;
+}
+
+.ext-line.hl.bottom {
+  bottom: -1px;
+}
+
+/* Vertical endless line */
+.ext-line.vl {
+  top: -200vh;
+  height: 400vh;
+  width: 0;
+  border-left: 1px dashed rgba(185, 185, 185, 0.45);
+}
+
+.ext-line.vl.solid {
+  border-left: 1px solid rgba(185, 185, 185, 0.7);
+}
+
+.ext-line.vl.left {
+  left: -1px;
+}
+
+.ext-line.vl.right {
+  right: -1px;
+}
+
+/* Make sure text and images stack above the absolute grid */
+.pm-v2-left,
+.pm-v2-right {
+  z-index: 10;
+}
+
+/* Responsive Adjustments for Mobile / Tablet */
+@media (max-width: 768px) {
+
+  /* Hide decorative grid lines on mobile to avoid layout clutter */
+  .v2-grid-lines {
+    display: none;
+  }
+
+  .pm-v2-container {
+    padding-top: 40px;
+  }
+
+  .pm-v2-left {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .pm-v2-container {
+    flex-direction: column;
+  }
+
+  .pm-v2-left {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 50px;
+  }
+
+  .pm-v2-p {
+    margin-bottom: 50px;
+  }
+
+  .pm-v2-right {
+    padding-top: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-box.box-green {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin-bottom: -40px;
+    align-self: flex-start;
+  }
+
+  .stat-box.box-blue {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    /* flush bottom override for mobile */
+    align-self: flex-end;
+    margin-top: -40px;
+  }
+}
+
+/* =========================================
+   Section 2: Meet Dawn
+   ========================================= */
+.meet-dawn {
+  position: relative;
+  width: 100%;
+  margin-top: 120px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-light);
+  /* Base fallback */
+}
+
+/* Seamless white gradient transition masks for top and bottom */
+.meet-dawn::before,
+.meet-dawn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 250px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.meet-dawn::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--color-light) 0%, transparent 100%);
+}
+
+.meet-dawn::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--color-light) 0%, transparent 100%);
+}
+
+/* Background gradient layers container */
+.md-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Soft Radial Gradient Masks */
+.md-bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  /* Removed transparency to deepen colours */
+  mix-blend-mode: normal;
+  /* Removed soft-light for richer pigmentation */
+}
+
+.md-bg-layer.mint {
+  /* Greenish tint: deeper, richer green */
+  background: radial-gradient(ellipse at 15% 85%, rgba(188, 216, 196, 1) 0%, rgba(218, 230, 220, 0) 80%);
+}
+
+.md-bg-layer.teal {
+  /* Teal/Blueish tint: deeper teal */
+  background: radial-gradient(ellipse at 85% 15%, rgba(178, 216, 212, 1) 0%, rgba(209, 230, 228, 0) 80%);
+}
+
+.md-bg-layer.frost {
+  /* Very light overlay just to blend center, not wash it out */
+  background: radial-gradient(circle at 50% 50%, rgba(246, 246, 246, 0) 0%, rgba(246, 246, 246, 0.4) 100%);
+}
+
+/* Central Content Wrapper */
+.md-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1440px;
+  padding: 160px 20px 180px;
+  /* Increased vertical padding to shift content down and stretch background */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Typography Overrides for Meet Dawn */
+.md-h2 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--color-dark);
+  margin: 24px 0 16px;
+  letter-spacing: -1px;
+}
+
+.md-p {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #383838;
+  max-width: 680px;
+  margin: 0 0 60px;
+}
+
+/* Static Top Badge */
+.md-tag-badge {
+  background: transparent;
+  border: 1px solid var(--color-dark);
+  border-radius: 40px;
+  padding: 8px 16px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-dark);
+  /* Badge has no pointer or hover effects */
+}
+
+.md-cta-btn {
+  background: var(--color-dark);
+  border: none;
+  border-radius: 60px;
+  padding: 8px 10px 8px 24px;
+  /* Reduced scale and precise asymmetric gap */
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  margin-top: 60px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.md-cta-btn:hover {
+  transform: scale(1.02) translateY(-4px);
+  /* Expands and floats up */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.md-cta-text {
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+  /* Reduced from 24px */
+  font-weight: 500;
+  color: var(--color-light);
+  /* White text */
+}
+
+.md-cta-icon {
+  background: var(--color-light);
+  width: 44px;
+  /* Scaled down circle */
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.md-cta-icon svg {
+  width: 20px;
+  /* Force internal icon to fit bounding scale */
+  height: 20px;
+}
+
+.md-cta-btn:hover .md-cta-icon {
+  transform: scale(1.1);
+  /* Circle icon grows inside button */
+}
+
+/* DemoReel Video Placeholder */
+.md-video-placeholder {
+  width: 100%;
+  max-width: 1024px;
+  aspect-ratio: 16 / 9;
+  background-color: #222222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+.md-video-text {
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #888888;
+  letter-spacing: 0.5px;
+}
+
+/* =========================================
+   Section 3: Dawn & Planners (Scroll-Spy)
+   ========================================= */
+.dp-section {
+  position: relative;
+  width: 100%;
+  height: 400vh;
+  /* Artificially tall for scroll space */
+  background-color: var(--color-light);
+}
+
+.dp-sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+/* LEFT COLUMN: Context & Accordion Tabs */
+.dp-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 5% 0 10%;
+  /* Matches layout indents */
+  max-width: 50%;
+}
+
+.dp-context {
+  margin-bottom: 80px;
+}
+
+.dp-h2 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 48px;
+  font-weight: 500;
+  color: var(--color-dark);
+  margin: 0 0 20px 0;
+  letter-spacing: -1px;
+}
+
+.dp-sub {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(34, 34, 34, 0.7);
+  margin: 0;
+}
+
+.dp-tabs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dp-tab {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dp-tab-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: rgba(34, 34, 34, 0.15);
+  /* Inactive grey */
+  transition: color 0.3s ease;
+}
+
+.dp-tab-icon {
+  font-size: 28px;
+  color: rgba(34, 34, 34, 0.15);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+/* Active Tab State */
+.dp-tab.is-active .dp-tab-title,
+.dp-tab.is-active .dp-tab-icon {
+  color: var(--color-dark);
+}
+
+/* RIGHT COLUMN: Media & Text Stacks */
+.dp-right {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-light);
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  /* Subtle divider */
+}
+
+.dp-media-stack {
+  position: absolute;
+  top: 110px;
+  /* Shifted down to clear sticky navbar */
+  right: 0;
+  width: 100%;
+  height: 50vh;
+  /* Adjusted to fit the remaining viewport space */
+  overflow: hidden;
+}
+
+.dp-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.dp-img.is-active {
+  opacity: 1;
+}
+
+.dp-text-stack {
+  position: absolute;
+  top: calc(50vh + 110px);
+  /* Relative to the shifted media stack */
+  left: 0;
+  width: 100%;
+  padding: 60px 10%;
+}
+
+.dp-desc {
+  position: absolute;
+  top: 60px;
+  left: 10%;
+  width: 80%;
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--color-dark);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.5s ease-in-out;
+  pointer-events: none;
+  /* prevent invisible text from blocking clicks */
+}
+
+.dp-desc.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Spinning Logo Bottom Right */
+.dp-scroll-logo {
+  position: absolute;
+  bottom: 60px;
+  right: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Transform rotation is handled by JS inline style */
+}
+
+.dp-scroll-logo svg {
+  width: 80px;
+  height: 80px;
+  /* Ensures smooth spinning rendering */
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .dp-sticky {
+    flex-direction: column;
+  }
+
+  .dp-left,
+  .dp-right {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/* =========================================
+   Section 4: This Is What Performance Means
+   ========================================= */
+.perf-section {
+  width: 100%;
+  margin-top: 120px;
+  background-color: var(--color-light);
+  padding-bottom: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.perf-container {
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 5%;
+}
+
+.perf-header {
+  margin-bottom: 40px;
+  /* Reduced to save vertical space */
+}
+
+.perf-h2 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 48px;
+  font-weight: 500;
+  color: var(--color-dark);
+  margin: 0 0 16px 0;
+  letter-spacing: -1px;
+}
+
+.perf-sub {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #383838;
+  max-width: 800px;
+  margin: 0;
+}
+
+/* 2-Column Grid */
+.perf-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  /* Reduced gap to accommodate edge-to-edge feeling */
+}
+
+/* Card Geometry */
+.perf-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-cyan {
+  background-color: #DAEAE7;
+}
+
+.card-green {
+  background-color: #DFE8DD;
+}
+
+/* Video Wrapper for Seamless Crossfade */
+.seamless-video {
+  position: relative;
+  width: 100%;
+  /* Use a wider aspect ratio (e.g. 16:10) so the card isn't excessively tall */
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.seamless-video video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 95%;
+  /* Increased from 65% to make particles much larger */
+  height: auto;
+  transform: translate(-50%, -50%);
+  transition: opacity 1s ease-in-out;
+  /* 1-second crossfade duration matches JS */
+}
+
+.seamless-video video.is-playing {
+  opacity: 1;
+  z-index: 2;
+}
+
+.seamless-video video.is-hidden {
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Bottom Text Area */
+.perf-card-text {
+  padding: 0 40px 40px 40px;
+}
+
+.perf-divider {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  margin: 0 0 24px 0;
+}
+
+.perf-h3 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  /* Normal weight for primary text */
+  color: #333333;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.5px;
+}
+
+.perf-h3 strong {
+  font-weight: 700;
+  /* Bold specifically targeted word */
+  color: #222222;
+}
+
+.perf-desc {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 0.4);
+  /* Faded grey for sub-description */
+  margin: 0;
+}
+
+/* Responsiveness */
+@media (max-width: 900px) {
+  .perf-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================
+   Section 5: ROI & Measurable Impact 
+   ========================================= */
+.roi-section {
+  position: relative;
+  width: 100%;
+  height: 300vh;
+  /* Scroll space for 3 states */
+  margin-top: 200px;
+  /* Increased margin to prevent NavBar overlap */
+  background-color: #DDEB9D;
+}
+
+.roi-sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 80px;
+  /* Push content down safely below NavBar */
+}
+
+/* Intersecting Crosshairs */
+.roi-line-horizontal,
+.roi-line-vertical {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.25);
+  /* Darker, slightly thicker line */
+  z-index: 10;
+}
+
+.roi-line-horizontal {
+  top: calc(50% + 40px);
+  /* Adjust center point for the top padding offset */
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  /* Refined line thickness */
+  -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+  mask-image: linear-gradient(to right, black 85%, transparent 100%);
+}
+
+.roi-line-vertical {
+  top: 0;
+  left: 50%;
+  width: 1.5px;
+  /* Refined line thickness */
+  height: 100%;
+  /* Fades out harder at the top to align with the nav list */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 22%, black 28%, black 85%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, transparent 22%, black 28%, black 85%, transparent 100%);
+}
+
+/* 2x2 Grid Container */
+.roi-grid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  position: relative;
+  z-index: 15;
+}
+
+/* Shared Quadrant Padding */
+.roi-quad {
+  display: flex;
+  flex-direction: column;
+  padding: 8% 10%;
+  position: relative;
+}
+
+/* Q1: Top Left - Navigation & Title */
+.q1 {
+  justify-content: flex-start;
+}
+
+.roi-nav {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 60px 0;
+}
+
+.roi-dot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  opacity: 0.5;
+  /* Default inactive */
+}
+
+.roi-dot.is-active {
+  opacity: 1;
+  /* Fully visible when active */
+}
+
+.roi-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  color: #222222;
+  border: 1px dashed rgba(34, 34, 34, 0.4);
+  transition: all 0.3s ease;
+}
+
+.roi-dot.is-active .roi-circle {
+  border: 1px solid #222222;
+  /* Solid black ring for active */
+}
+
+.roi-label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 18px;
+  color: #383838;
+}
+
+.roi-h2 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 44px;
+  font-weight: 500;
+  color: #222222;
+  margin: 0 0 20px 0;
+  letter-spacing: -1px;
+}
+
+.roi-sub {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(34, 34, 34, 0.7);
+  margin: 0;
+  max-width: 90%;
+}
+
+/* Q3: Bottom Left - Giant Stats */
+.q3 {
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.roi-stat-stack {
+  position: relative;
+  width: 100%;
+  height: 180px;
+}
+
+.roi-stat {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) translateY(20px);
+  font-family: 'Manrope', sans-serif;
+  font-size: 160px;
+  /* Massive font */
+  font-weight: 400;
+  color: #222222;
+  letter-spacing: -4px;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.roi-stat.is-active {
+  opacity: 1;
+  transform: translateY(-50%) translateY(0);
+}
+
+/* Q4: Bottom Right - Descriptions */
+.q4 {
+  justify-content: center;
+  padding-left: 15%;
+  /* Indent text slightly */
+}
+
+.roi-desc-stack {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  height: 120px;
+}
+
+.roi-desc {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.roi-desc.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.roi-desc h3 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: #222222;
+  margin: 0 0 12px 0;
+}
+
+.roi-desc p {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #383838;
+  margin: 0;
+}
+
+/* Responsive Overrides */
+@media (max-width: 900px) {
+  .roi-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    overflow-y: auto;
+  }
+
+  .roi-line-horizontal,
+  .roi-line-vertical {
+    display: none;
+  }
+}
+
+/* =========================================
+   Section 6: What Our Customers Say
+   ========================================= */
+.customer-section {
+  width: 100%;
+  background-color: #F8F8F8;
+  padding: 100px 0 120px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-container {
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 5%;
+  margin: 0 auto;
+}
+
+.customer-h2 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+  color: #222222;
+  margin: 0 0 50px 0;
+  letter-spacing: -1px;
+}
+
+/* Horizontal Scroll Container */
+.customer-slider {
+  display: flex;
+  gap: 0;
+  /* Cards touch their borders */
+  width: 100%;
+  overflow-x: auto;
+  /* Native smooth snapping */
+  padding-bottom: 0px;
+  /* Removed extra spacing since scrollbar is hidden */
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+  /* Modern scrollbar hiding */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome/Safari */
+.customer-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual Card */
+.customer-card {
+  flex: 0 0 auto;
+  width: 480px;
+  /* Fixed width to force scrolling */
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #F9F9F9;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  /* Snap precisely to the left edge of each card */
+  transition: background-color 0.4s ease;
+  cursor: pointer;
+}
+
+/* The first card needs a left border to start the grid */
+.customer-card:first-child {
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Hover Event - Turns Daybreak Green */
+.customer-card:hover {
+  background-color: #DFE8DD;
+}
+
+/* Card Internal Layout */
+.cust-content {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.cust-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  color: #383838;
+  padding: 6px 20px;
+  border: 1px solid #222222;
+  border-radius: 20px;
+  margin-bottom: 40px;
+}
+
+.cust-quote {
+  font-family: 'Manrope', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #333333;
+  margin: 0 0 60px 0;
+  flex-grow: 1;
+  /* Pushes the author area down */
+}
+
+/* Author Section */
+.cust-author {
+  display: flex;
+  flex-direction: column;
+}
+
+.cust-name {
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #222222;
+  margin: 0 0 4px 0;
+}
+
+.cust-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  color: rgba(34, 34, 34, 0.6);
+  margin: 0;
+}
+
+/* Image Wrapper at Bottom */
+.cust-img-wrap {
+  width: 100%;
+  padding: 0 40px 40px 40px;
+  box-sizing: border-box;
+  /* Keep padding from breaking layout */
+}
+
+.cust-img-wrap img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .customer-card {
+    width: 85vw;
+    /* Almost full screen width on mobile */
+  }
+}
+
+/* =========================================
+   Section 7: AI Labor Model
+   ========================================= */
+.ailabor-section {
+  width: 100%;
+  background-color: #ECECEC;
+  /* Very light grey matching design */
+  overflow: hidden;
+  /* For the image full bleed */
+}
+
+.ailabor-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  /* Asymmetrical split: right image is smaller */
+  width: 100%;
+  min-height: 600px;
+}
+
+/* Left Column Styling */
+.ailabor-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* Was flex-end, now align to the left side */
+  padding-right: 40px;
+}
+
+/* Internal Wrapper to constrain text width */
+.ailabor-content-inner {
+  max-width: 800px;
+  width: 100%;
+  padding-left: 4vw;
+  /* Match general page padding */
+}
+
+/* Desktop alignment mimicking 1920px offset */
+@media (min-width: 1920px) {
+  .ailabor-content-inner {
+    padding-left: calc((100vw - 1920px) / 2 + 4vw);
+  }
+}
+
+.badge-outline {
+  display: inline-block;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  color: #383838;
+  padding: 6px 20px;
+  border: 1px solid #383838;
+  border-radius: 20px;
+  margin-bottom: 40px;
+}
+
+.ailabor-h2 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+  color: #222222;
+  margin: 0 0 24px 0;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.ailabor-p {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #383838;
+  margin: 0 0 50px 0;
+  max-width: 700px;
+  /* Increased to allow wider text block */
+}
+
+/* Dark Pill CTA Button */
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #222222;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 14px 12px 24px;
+  border-radius: 40px;
+  transition: all 0.3s ease;
+}
+
+.btn-dark:hover {
+  background-color: #444444;
+  /* Slightly lighter black on hover */
+  transform: translateY(-2px);
+}
+
+.btn-arrow-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.btn-dark:hover .btn-arrow-icon {
+  transform: translateX(4px);
+  /* Arrow nudges right */
+}
+
+/* Right Image Full Bleed */
+.ailabor-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.ailabor-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .ailabor-grid {
+    grid-template-columns: 1fr;
+    /* Stack vertically on mobile */
+  }
+
+  .ailabor-content {
+    justify-content: center;
+    padding: 60px 0;
+  }
+
+  .ailabor-content-inner {
+    padding: 0 5%;
+  }
+
+  .ailabor-image {
+    min-height: 400px;
+  }
+}
+
+/* =========================================
+   Section 8: Planning Capacity CTA
+   ========================================= */
+.cta-section {
+  width: 100%;
+  background-color: #F8F8F8;
+  /* Same clean background as Customer section */
+  padding: 140px 0 160px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.cta-container {
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.cta-h2 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 52px;
+  font-weight: 500;
+  color: #222222;
+  margin: 0 0 30px 0;
+  line-height: 1.2;
+  letter-spacing: -1.5px;
+  max-width: 700px;
+  /* Constrain phrase to stack beautifully */
+}
+
+/* Base style for individual characters added by JS */
+.cta-char {
+  display: inline-block;
+  color: inherit;
+  transition: color 0.6s ease;
+  /* Smooth fade when turning green or reverting to black */
+}
+
+.cta-p {
+  font-family: 'Manrope', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #808080;
+  margin: 0 0 50px 0;
+  max-width: 900px;
+}
+
+/* The .btn-dark is perfectly inherited from Section 7 */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cta-h2 {
+    font-size: 36px;
+  }
+
+  .cta-p {
+    font-size: 16px;
+  }
+}
+
+/* =========================================
+   Section 9: Footer
+   ========================================= */
+.site-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top Tier */
+.footer-top {
+  background-color: #F8F8F8;
+  /* Exact match to the CTA section background above */
+  padding: 100px 5vw 40px 5vw;
+  /* Compressed bottom gap */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-logo-svg {
+  display: block;
+}
+
+.footer-logo-text {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: #296D3A;
+  letter-spacing: -0.5px;
+}
+
+.footer-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  /* Spacing between Product, About Us, etc. */
+}
+
+.footer-nav a {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  color: #383838;
+  text-decoration: none;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: #296D3A;
+  /* Brand green on hover */
+}
+
+.footer-link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #383838;
+  transition: color 0.3s ease;
+}
+
+.footer-link-icon:hover {
+  color: #296D3A;
+}
+
+.footer-icon-decoration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #383838;
+}
+
+/* Bottom Tier */
+.footer-bottom {
+  background-color: #222222;
+  padding: 40px 5vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-legal {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.footer-legal a {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+  color: #FFFFFF;
+  /* Brighten to solid white on hover */
+}
+
+.footer-copyright {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Responsive constraints mimicking 1920px baseline to align exact flush left/right matching the Hero/Nav layout tweaks */
+@media (min-width: 1920px) {
+
+  .footer-top,
+  .footer-bottom {
+    padding-left: calc((100vw - 1920px) / 2 + 4vw);
+    padding-right: calc((100vw - 1920px) / 2 + 4vw);
+  }
+}
+
+@media (max-width: 900px) {
+  .footer-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
+
+  .footer-nav {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .footer-legal {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
