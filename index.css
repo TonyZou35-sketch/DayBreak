@@ -2403,3 +2403,117 @@ body {
     font-size: 36px;
   }
 }
+
+@media (max-width: 768px) {
+
+  /* =========================================================
+       1. Hero Animation Kill-Switch
+       ========================================================= */
+  .hero-section *,
+  .background-wrapper,
+  .hero-text-svg,
+  .daybreak-text-svg,
+  .logo-large-svg,
+  .bg-gradient-svg {
+    animation: none !important;
+    transition: none !important;
+    clip-path: none !important;
+    opacity: 1 !important;
+    transform: translate(0, 0) scale(1) !important;
+    filter: none !important;
+  }
+
+  /* =========================================================
+       2. Stack Everything (2-Column Flexbox Layouts)
+       ========================================================= */
+  .footer-top,
+  .footer-bottom,
+  .two-col-grid,
+  .split-layout,
+  .articles-grid,
+  .cards-row,
+  .video-cards-wrapper,
+  div[style*="display: flex"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  /* Ensure images/videos appear above text when stacked */
+  .card-image-col,
+  .media-container,
+  .image-wrapper {
+    order: -1 !important;
+    width: 100% !important;
+  }
+
+  /* =========================================================
+       3. Asset Sizing
+       ========================================================= */
+  img,
+  video,
+  svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* =========================================================
+       4. Typography & Spacing
+       ========================================================= */
+  h1 {
+    font-size: 40px !important;
+    line-height: 1.1 !important;
+  }
+
+  h2 {
+    font-size: 32px !important;
+    line-height: 1.2 !important;
+  }
+
+  h3 {
+    font-size: 24px !important;
+  }
+
+  p {
+    font-size: 16px !important;
+  }
+
+  section,
+  .section-padding,
+  .padding-large {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    gap: 32px !important;
+  }
+
+  /* Override any specific massive margins/gaps */
+  * {
+    column-gap: 20px !important;
+    row-gap: 20px !important;
+  }
+
+  /* =========================================================
+       5. Navbar Simplification
+       ========================================================= */
+  /* Hide the center text links container */
+  .navbar-center,
+  .nav-links,
+  .navbar-left {
+    /* Fallback for Daybreak's actual left-nav structure */
+    display: none !important;
+  }
+
+  /* Ensure Navbar handles the remaining Logo and CTA properly */
+  .navbar {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 20px !important;
+  }
+
+  .navbar-right {
+    display: flex !important;
+  }
+}
