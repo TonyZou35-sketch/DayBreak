@@ -1,0 +1,831 @@
+/* Base styles for About Us */
+body {
+    background-color: #F8F8F8;
+    /* Light off-white background matching the image */
+    margin: 0;
+    padding: 0;
+}
+
+.about-page {
+    width: 100%;
+}
+
+/* =========================================
+   TEAM HEADER SECTION
+   ========================================= */
+.team-header-section {
+    padding: 160px max(5vw, calc(50vw - 600px)) 100px;
+    background-color: #F8F8F8;
+}
+
+.team-header-container {
+    max-width: 800px;
+}
+
+.team-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 78px;
+    /* Very large text */
+    font-weight: 400;
+    color: #2D3136;
+    margin: 0 0 24px 0;
+    letter-spacing: -2px;
+}
+
+.team-title-green {
+    color: #3BB159;
+    /* Daybreak Green */
+    font-weight: 300;
+}
+
+.team-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    color: #4A4A4A;
+    line-height: 1.5;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* =========================================
+   HOW WE WORK SECTION
+   ========================================= */
+.how-we-work-section {
+    padding: 60px max(5vw, calc(50vw - 600px)) 240px;
+    background-color: #F8F8F8;
+    overflow-x: hidden;
+    /* To prevent horizontal scroll from extending left line */
+}
+
+.how-we-work-container {
+    display: flex;
+    align-items: flex-end;
+    /* Align to the bottom of the image */
+    justify-content: space-between;
+    gap: 60px;
+}
+
+/* Left Content */
+.hww-content {
+    flex: 0 0 45%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    /* Slight offset above the bottom line */
+}
+
+.hww-icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 32px;
+}
+
+.hww-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 48px;
+    color: #2D3136;
+    margin: 0 0 24px 0;
+    line-height: 1.1;
+    font-weight: 500;
+    letter-spacing: -1px;
+}
+
+.hww-title-green {
+    color: #B2DA2D;
+    /* Lime Green for "Work" */
+    font-weight: 500;
+}
+
+.hww-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #666666;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 400px;
+}
+
+/* Right Image */
+.hww-image-col {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.team-img-wrapper {
+    position: relative;
+    /* Wrapper fits image smoothly */
+    display: inline-block;
+    width: 100%;
+}
+
+.hww-image {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Faded Decorative Lines */
+/* Bottom-Left moving Down */
+.line-bottom-left-down {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 1px;
+    height: 200px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, transparent 100%);
+}
+
+/* Bottom-Left moving Left */
+.line-bottom-left-left {
+    position: absolute;
+    right: 100%;
+    bottom: 0;
+    height: 1px;
+    width: 100vw;
+    /* Extremely long so it reaches the edge */
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.15) 0%, transparent 100%);
+}
+
+/* Bottom-Right moving Down */
+.line-bottom-right-down {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 1px;
+    height: 200px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, transparent 100%);
+}
+
+/* Leaders Section */
+.leaders-section {
+    padding: 100px 5vw;
+    background-color: #FAFAFA;
+}
+
+.leaders-container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.leaders-header {
+    margin-bottom: 60px;
+}
+
+.leaders-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 56px;
+    font-weight: 500;
+    color: #2D3136;
+    margin-bottom: 24px;
+}
+
+.leaders-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #666666;
+    max-width: 900px;
+}
+
+.leaders-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.leader-card {
+    border: 1px solid #EAEAEA;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+}
+
+.leader-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.leader-info {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.leader-name {
+    font-family: 'Manrope', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #2D3136;
+    margin-bottom: 16px;
+}
+
+.leader-role {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #666666;
+    padding: 6px 12px;
+    border: 1px solid #EAEAEA;
+    border-radius: 100px;
+    letter-spacing: 0.5px;
+}
+
+/* Our Story / Timeline Section */
+.our-story-section {
+    background-color: #D9EC98;
+    padding: 100px 5vw;
+}
+
+.story-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.story-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #2D3136;
+    margin-bottom: 24px;
+    display: block;
+}
+
+.story-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: #2D3136;
+    margin-bottom: 100px;
+    line-height: 1.2;
+}
+
+.story-timeline-container {
+    position: relative;
+    margin-bottom: 80px;
+}
+
+.timeline-line {
+    position: absolute;
+    top: 21px;
+    /* Centers with the 42px node-year */
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #2D3136;
+    z-index: 1;
+}
+
+.timeline-nodes {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-node {
+    flex: 1;
+    position: relative;
+    padding-right: 20px;
+}
+
+.node-year-wrapper {
+    position: relative;
+    margin-bottom: 32px;
+}
+
+.node-year {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px dashed #2D3136;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #DFEDAD;
+    /* Match section bg to block the timeline-line */
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #2D3136;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.timeline-node.active .node-year {
+    background-color: #2D3136;
+    border: 1px solid #2D3136;
+    color: #FFFFFF;
+}
+
+.node-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #2D3136;
+    opacity: 0.5;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+}
+
+.node-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #2D3136;
+    opacity: 0.5;
+    max-width: 250px;
+    transition: all 0.3s ease;
+}
+
+.timeline-node.active .node-title,
+.timeline-node.active .node-desc {
+    opacity: 1;
+}
+
+.story-controls {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+}
+
+.story-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid #2D3136;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.story-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.story-btn:active {
+    transform: scale(0.95);
+}
+
+/* Trusted Leaders Section */
+.trusted-leaders-section {
+    background-color: #F8F9FA;
+    padding: 100px 5vw;
+}
+
+.trusted-container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.trusted-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #2D3136;
+    margin-bottom: 60px;
+}
+
+.trusted-grid {
+    display: flex;
+    gap: 80px;
+}
+
+.trusted-column {
+    flex: 1;
+}
+
+.trusted-col-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #2D3136;
+    padding-bottom: 12px;
+    margin-bottom: 40px;
+    border-bottom: 1px dashed rgba(45, 49, 54, 0.3);
+}
+
+.directors-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.director-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.director-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #2D3136;
+    margin: 0;
+}
+
+.director-role {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #2D3136;
+    opacity: 0.6;
+    margin: 0;
+}
+
+.investors-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 60px 80px;
+    align-items: center;
+}
+
+.investor-logo {
+    max-width: 100%;
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    object-position: left center;
+    margin-right: auto;
+    display: block;
+}
+
+/* Tech Companies Section */
+.tech-companies-section {
+    padding: 100px 5vw;
+    background-color: #FAFAFA;
+    border-top: 1px solid #EAEAEA;
+    text-align: center;
+}
+
+.tech-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.tech-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #2D3136;
+    margin-bottom: 60px;
+}
+
+.tech-title span {
+    /* Base color inherited */
+    color: inherit;
+}
+
+.tech-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.tech-logo {
+    height: 120px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* News Section */
+.news-section {
+    background-color: #F8F9FA;
+    padding: 100px 5vw;
+}
+
+.news-container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.news-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #2D3136;
+    margin-bottom: 24px;
+    display: block;
+}
+
+.news-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: #2D3136;
+    margin-bottom: 60px;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid rgba(45, 49, 54, 0.15);
+    border-bottom: 1px solid rgba(45, 49, 54, 0.15);
+}
+
+.news-card {
+    display: flex;
+    flex-direction: column;
+    padding: 60px 40px;
+    text-decoration: none;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    border-right: 1px solid rgba(45, 49, 54, 0.15);
+}
+
+.news-card:last-child {
+    border-right: none;
+}
+
+.news-card:hover {
+    background-color: #D1E6E4;
+}
+
+.news-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #2D3136;
+    padding: 8px 24px;
+    border: 1px solid #2D3136;
+    border-radius: 40px;
+    display: inline-block;
+    width: fit-content;
+    margin-bottom: 40px;
+}
+
+.news-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 40px;
+}
+
+.news-card-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #2D3136;
+    line-height: 1.4;
+    margin-bottom: 40px;
+    flex-grow: 1;
+}
+
+.news-date {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #2D3136;
+    opacity: 0.6;
+    margin: 0;
+}
+
+.news-date {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #2D3136;
+    opacity: 0.6;
+    margin: 0;
+}
+
+/* Our Office Section */
+.office-section {
+    background-color: #f6f6f6;
+    padding: 100px 5vw;
+}
+
+.office-container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.office-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #2D3136;
+    margin-bottom: 24px;
+    display: block;
+    opacity: 0.6;
+}
+
+.office-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: #2D3136;
+    margin-bottom: 60px;
+}
+
+.office-grid {
+    display: flex;
+    gap: 40px;
+}
+
+.office-photo-wrapper {
+    flex: 1;
+}
+
+.office-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 6px;
+}
+
+.office-map-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #DAE6DC;
+    padding: 40px;
+    border-radius: 6px;
+}
+
+.map-wrapper {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.office-map-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    border-radius: 6px;
+}
+
+.office-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.office-location {
+    font-family: 'Manrope', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #2D3136;
+    margin: 0;
+}
+
+.office-address {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    color: #2D3136;
+    opacity: 0.6;
+    margin: 0;
+}
+
+/* Our Patents Section */
+.patents-section {
+    background-color: #ffffff;
+    padding: 100px 5vw;
+}
+
+.patents-container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.patents-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: #2D3136;
+    margin-bottom: 80px;
+}
+
+.patents-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 80px;
+    column-gap: 60px;
+}
+
+.patent-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.patent-year {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #2D3136;
+}
+
+.patent-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #2D3136;
+    opacity: 0.6;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Responsive Scaling */
+@media screen and (max-width: 991px) {
+    .how-we-work-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .news-card {
+        border-right: none;
+        border-bottom: 1px solid rgba(45, 49, 54, 0.15);
+    }
+
+    .news-card:last-child {
+        border-bottom: none;
+    }
+
+    .office-grid {
+        flex-direction: column;
+    }
+
+    .timeline-nodes {
+        flex-wrap: wrap;
+        gap: 60px;
+    }
+
+    .trusted-grid {
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    .timeline-node {
+        flex: 1 1 45%;
+    }
+
+    .hww-content {
+        flex: 1;
+        margin-bottom: 60px;
+        padding-bottom: 0;
+    }
+
+    .hww-image-col {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .line-bottom-left-left {
+        width: 100vw;
+    }
+
+    .team-title {
+        font-size: 48px;
+    }
+
+    .hww-title {
+        font-size: 36px;
+    }
+
+    .leaders-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .leaders-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .leaders-title {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .leaders-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-node {
+        flex: 1 1 100%;
+    }
+
+    .tech-title {
+        font-size: 24px;
+        margin-bottom: 40px;
+    }
+
+    .tech-logo {
+        height: 80px;
+    }
+}

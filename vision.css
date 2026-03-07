@@ -1,0 +1,765 @@
+/* =========================================
+   VISION & MISSION MAIN CSS
+   ========================================= */
+
+body {
+    background-color: #F6F6F6;
+    /* Setting body to match the specific #F6F6F6 design requirement */
+}
+
+/* =========================================
+   DECISION BARRIERS SECTION
+   ========================================= */
+.vision-barriers {
+    width: 100%;
+    /* Keep consistent padding and background with the Vision Statement section */
+    padding: 120px max(5vw, calc(50vw - 600px));
+    background-color: #F6F6F6;
+}
+
+.barriers-container {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.barriers-header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+}
+
+.barriers-title {
+    font-size: 56px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #333333;
+    letter-spacing: -2px;
+}
+
+.barriers-subtitle {
+    font-size: 20px;
+    color: #666666;
+    line-height: 1.5;
+}
+
+/* Accordion Grid System */
+.barriers-accordion {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* Vertically center items to allow pop-out effect */
+    width: 100%;
+    height: 500px;
+    /* Fixed height for the container frame */
+    border: 1px solid #EAEAEA;
+    background-color: #F8F8F8;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.barrier-item {
+    flex: 1;
+    /* Distribute available space equally */
+    border-right: 1px solid #EAEAEA;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    /* Fixed height normal state matches container */
+    transition: flex 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.4s ease, border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+    cursor: default;
+    overflow: hidden;
+    /* Hide overflow as columns expand/shrink */
+    box-sizing: border-box;
+    position: relative;
+    /* Stacking context to pop over siblings */
+    z-index: 1;
+}
+
+/* Remove right border on the last item */
+.barrier-item:last-child {
+    border-right: none;
+}
+
+.barrier-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 250px;
+    /* Constrain internal content width */
+}
+
+/* Default Typography States */
+.barrier-tag {
+    align-self: flex-start;
+    padding: 6px 16px;
+    border: 1px solid #CCCCCC;
+    border-radius: 40px;
+    font-size: 14px;
+    color: #666666;
+    margin-bottom: 40px;
+    transition: all 0.3s ease;
+}
+
+.barrier-num {
+    font-size: 56px;
+    font-weight: 500;
+    color: #333333;
+    line-height: 1;
+    margin-bottom: 32px;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.barrier-item-title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #333333;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+    transition: color 0.3s ease;
+}
+
+.barrier-desc {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666666;
+    transition: color 0.3s ease;
+}
+
+.barrier-desc strong {
+    color: #333333;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+/* =========================================
+   HOVER STATES (The Accordion Effect)
+   ========================================= */
+.barrier-item:hover,
+.barrier-item.is-active {
+    flex: 2;
+    /* Expand this column width */
+    height: 580px;
+    /* Pop out vertically (40px top and bottom) */
+    background-color: #DDEB9D;
+    /* Highlight color */
+    z-index: 10;
+    /* Render on top of adjacent borders and container frame */
+    border: 1px solid #DDEB9D;
+    /* Replace inherited border with solid green */
+    border-radius: 8px;
+    /* Give the raised card a smooth edge */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    /* Cast a soft shadow on adjacent elements */
+}
+
+.barriers-accordion:hover .barrier-item:not(:hover),
+.barriers-accordion:has(.is-active) .barrier-item:not(.is-active) {
+    background-color: #F4F4F4;
+    /* Recede other columns slightly */
+    /* Height explicitly remains 500px, flex shrinks them horizontally */
+}
+
+/* Typography Color & Size Shifts */
+.barrier-item:hover .barrier-tag,
+.barrier-item.is-active .barrier-tag {
+    border-color: #333333;
+    color: #333333;
+}
+
+.barrier-item:hover .barrier-num,
+.barrier-item.is-active .barrier-num {
+    font-size: 140px;
+    /* Massive size increase */
+    color: #1A1A1A;
+    font-weight: 400;
+    margin-bottom: 24px;
+    letter-spacing: -6px;
+    line-height: 0.9;
+    margin-top: -20px;
+    /* Pull the giant text up slightly */
+}
+
+.barrier-item:hover .barrier-item-title,
+.barrier-item.is-active .barrier-item-title {
+    font-size: 32px;
+    /* Bump in title size for expanded layout */
+    letter-spacing: -1px;
+    color: #1A1A1A;
+    margin-bottom: 32px;
+}
+
+.barrier-item:hover .barrier-desc,
+.barrier-item:hover .barrier-desc strong,
+.barrier-item.is-active .barrier-desc,
+.barrier-item.is-active .barrier-desc strong {
+    color: #1A1A1A;
+}
+
+/* =========================================
+   HERO SECTION
+   ========================================= */
+.vision-hero {
+    width: 100%;
+    /* No local bg color needed as body handles it, but just to be safe */
+    background-color: #F6F6F6;
+    padding-top: 180px;
+    padding-bottom: 240px;
+    padding-left: max(5vw, calc(50vw - 600px));
+    padding-right: max(5vw, calc(50vw - 600px));
+}
+
+.vision-hero-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.vision-eyebrow {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #999999;
+    margin-bottom: 24px;
+    display: block;
+}
+
+.vision-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 130px;
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -4px;
+    color: #222222;
+    margin: 0 0 40px 0;
+}
+
+.vision-title-green {
+    color: #39B15B;
+}
+
+.vision-subtitle {
+    font-family: 'Manrope', sans-serif;
+    font-size: 24px;
+    line-height: 1.4;
+    color: #444444;
+    max-width: 500px;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Responsive Scaling */
+@media (max-width: 1200px) {
+    .vision-title {
+        font-size: 96px;
+        letter-spacing: -3px;
+    }
+}
+
+@media (max-width: 900px) {
+    .vision-title {
+        font-size: 72px;
+        letter-spacing: -2px;
+    }
+
+    .vision-subtitle {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .vision-hero {
+        padding-top: 140px;
+        padding-bottom: 60px;
+    }
+
+    .vision-title {
+        font-size: 56px;
+        letter-spacing: -1.5px;
+    }
+
+    .vision-subtitle {
+        font-size: 18px;
+    }
+}
+
+/* =========================================
+   OUR VISION SECTION
+   ========================================= */
+.vision-statement {
+    position: relative;
+    width: 100%;
+    /* Base background color */
+    background-color: #F6F6F6;
+    background-image:
+        /* TOP LAYER: Vertical mask fading into #F6F6F6 at top and bottom to guarantee seamless horizontal edges */
+        linear-gradient(180deg, #F6F6F6 0%, transparent 25%, transparent 75%, #F6F6F6 100%),
+        /* MIDDLE LAYERS: Deep, complex green glows concentrated purely in the center */
+        radial-gradient(ellipse at 50% 50%, rgba(160, 220, 180, 0.6) 0%, transparent 70%),
+        radial-gradient(circle at 30% 60%, rgba(130, 200, 150, 0.5) 0%, transparent 60%),
+        radial-gradient(circle at 75% 35%, rgba(140, 210, 160, 0.5) 0%, transparent 60%);
+    padding: 120px max(5vw, calc(50vw - 600px));
+}
+
+.vision-statement-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.vision-statement-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 80px;
+    font-weight: 400;
+    letter-spacing: -2.5px;
+    color: #333333;
+    margin: 0;
+}
+
+.vision-divider {
+    width: 100%;
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    margin: 60px 0;
+}
+
+.vision-content-row {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+/* =========================================
+   FOOTER OVERRIDES FOR VISION PAGE
+   ========================================= */
+.footer-top {
+    background-color: #F6F6F6 !important;
+}
+
+.vision-indicator {
+    display: flex;
+    gap: 4px;
+    margin-top: 10px;
+    /* Align precisely with the cap height of the large text */
+}
+
+.v-rect {
+    width: 6px;
+    height: 12px;
+    background-color: #B2C7B6;
+    /* subtle grey-green rectangles */
+}
+
+.vision-statement-text {
+    font-family: 'Manrope', sans-serif;
+    font-size: 24px;
+    line-height: 1.5;
+    color: #4A4A4A;
+    margin: 0;
+    font-weight: 400;
+    max-width: 800px;
+}
+
+/* Responsive adjustments for the Vision block */
+@media (max-width: 1024px) {
+    .vision-statement-title {
+        font-size: 64px;
+        letter-spacing: -2px;
+    }
+
+    .vision-statement-text {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .vision-statement-title {
+        font-size: 48px;
+        letter-spacing: -1.5px;
+    }
+
+    .vision-statement-text {
+        font-size: 20px;
+    }
+
+    .vision-divider {
+        margin: 40px 0;
+    }
+}
+
+/* =========================================
+   OUR VALUES SECTION (Interactive Carousel)
+   ========================================= */
+.our-values {
+    background-color: #D1E6E4;
+    /* Soft mint/grey background updated per feedback */
+    padding: 120px max(5vw, calc(50vw - 600px));
+}
+
+.values-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.values-main-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 56px;
+    font-weight: 500;
+    color: #222222;
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+}
+
+.values-divider {
+    border: none;
+    border-bottom: 1.5px dashed rgba(0, 0, 0, 0.2);
+    margin-bottom: 60px;
+}
+
+/* Content Split */
+.values-content-split {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.values-left-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 480px;
+}
+
+.values-right-col {
+    flex: 1.2;
+    /* Slightly wider */
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Image styling */
+.val-image {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease;
+}
+
+/* Controls */
+.values-controls {
+    display: flex;
+    gap: 16px;
+    margin-bottom: auto;
+    /* Push content down */
+}
+
+.val-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid #999999;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333333;
+    transition: all 0.2s ease;
+}
+
+.val-btn:hover {
+    background: #333333;
+    color: #FFFFFF;
+    border-color: #333333;
+}
+
+/* Text Content */
+.values-text-content {
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+.fade-transition {
+    transition: opacity 0.3s ease;
+}
+
+.val-tag {
+    display: inline-block;
+    padding: 6px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 40px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    color: #444444;
+    margin-bottom: 32px;
+}
+
+.val-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: #222222;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+
+.val-desc {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    color: #555555;
+    line-height: 1.6;
+    max-width: 90%;
+}
+
+/* Bottom Navigation */
+.values-bottom-nav {
+    display: flex;
+    gap: 32px;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.val-nav-item {
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 0;
+    opacity: 0.6;
+    /* Inactive opacity by default */
+    transition: all 0.3s ease;
+}
+
+.val-nav-item:hover {
+    opacity: 0.8;
+}
+
+.val-nav-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px dashed #777777;
+    /* Dashed default */
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #555555;
+    transition: all 0.3s ease;
+}
+
+.val-nav-label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    color: #555555;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+/* Active State for Bottom Nav */
+.val-nav-item.is-active {
+    opacity: 1;
+}
+
+.val-nav-item.is-active .val-nav-num {
+    border: 1px solid #1A1A1A;
+    /* Solid inner loop */
+    color: #1A1A1A;
+    font-weight: 500;
+}
+
+.val-nav-item.is-active .val-nav-label {
+    color: #1A1A1A;
+    font-weight: 500;
+}
+
+/* Responsive Scaling */
+@media screen and (max-width: 991px) {
+    .values-content-split {
+        flex-direction: column;
+    }
+
+    .values-bottom-nav {
+        flex-wrap: wrap;
+    }
+}
+
+/* =========================================
+   FAQS SCROLLING SECTION
+   ========================================= */
+.vision-faqs {
+    position: relative;
+    /* 4 items = 4 "pages" of scrolling */
+    height: 400vh;
+    background-color: #FFFFFF;
+}
+
+.faqs-sticky-wrapper {
+    position: sticky;
+    /* Offset by the height of the fixed navbar so it doesn't get hidden */
+    top: 76px;
+    height: calc(100vh - 76px);
+    overflow: hidden;
+}
+
+.faqs-split-layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* Left Column (Sticky Content) */
+.faqs-left-col {
+    flex: 1;
+    background-color: #F6F6F6;
+    /* Reduced right padding to tighten the gap to the right column */
+    padding: 80px 40px 80px max(5vw, calc(50vw - 600px));
+    display: flex;
+    flex-direction: column;
+}
+
+.faqs-main-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: #1A1A1A;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+}
+
+.faqs-subtitle {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    color: #666666;
+    margin-bottom: 60px;
+}
+
+.faqs-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-top: 1px solid #EAEAEA;
+}
+
+.faq-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 0;
+    border-bottom: 1px solid #EAEAEA;
+    opacity: 0.3;
+    /* Inactive by default */
+    transition: opacity 0.4s ease;
+    cursor: pointer;
+}
+
+.faq-row:hover {
+    opacity: 0.7;
+}
+
+.faq-row.is-active {
+    opacity: 1;
+}
+
+.faq-question {
+    font-family: 'Manrope', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: #1A1A1A;
+    max-width: 90%;
+    line-height: 1.3;
+}
+
+.faq-icon {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    color: #1A1A1A;
+    font-weight: 300;
+}
+
+/* Right Column (Visuals) */
+.faqs-right-col {
+    flex: 1.1;
+    /* Slightly wider to balance the tightened gap */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: #F6F6F6;
+    padding-right: max(5vw, calc(50vw - 600px));
+}
+
+.faqs-image {
+    width: 100%;
+    height: 55%;
+    object-fit: cover;
+}
+
+.faqs-content-block {
+    padding: 60px;
+    flex: 1;
+    position: relative;
+    display: flex;
+    background-color: #F6F6F6;
+    /* Updated to correct grey background */
+}
+
+.faqs-placeholder-text {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    color: #777777;
+    line-height: 1.6;
+    max-width: 380px;
+    margin-top: 20px;
+}
+
+.faq-spinning-icon {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    width: 104.5px;
+    height: 104.5px;
+    opacity: 0.3;
+    /* JS will handle transform: rotate() directly */
+}
+
+/* Responsive Scaling */
+@media screen and (max-width: 991px) {
+    .faqs-split-layout {
+        flex-direction: column;
+    }
+
+    .faqs-left-col,
+    .faqs-right-col {
+        height: 50%;
+        padding: 40px;
+    }
+
+    .faq-question {
+        font-size: 20px;
+    }
+
+    /* Allow natural scrolling on mobile instead of tricky sticky logic */
+    .vision-faqs {
+        height: auto;
+    }
+
+    .faqs-sticky-wrapper {
+        position: relative;
+        height: auto;
+        top: 0;
+    }
+}

@@ -92,6 +92,7 @@ body {
   font-weight: 500;
   letter-spacing: -0.3px;
   margin-bottom: 2px;
+  color: #257A3F;
   /* Fine-tune optical alignment */
 }
 
@@ -145,6 +146,93 @@ body {
   color: var(--color-grey-1);
 }
 
+/* --- Dropdown Wrapper --- */
+.nav-dropdown-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* Make sure wrapper has height to prevent hover gap dropping */
+  height: 100%;
+  padding: 10px 0;
+  /* Increase hoverable area to bridge gap to absolute drop-down */
+}
+
+/* --- The Dropdown Card --- */
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  /* Position right below the invisible padded bottom of wrapper */
+  left: -20px;
+  /* Align slightly left to match text visually */
+  width: 320px;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03);
+  padding: 12px 0;
+  overflow: hidden;
+  z-index: 1000;
+
+  /* Hidden Animation State */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Trigger the menu on hover of the wrapper (which includes the padded area bridging the gap) */
+.nav-dropdown-wrapper:hover .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* --- Dropdown Items --- */
+.nav-dropdown-item {
+  display: block;
+  text-decoration: none;
+  padding: 16px 24px;
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid #F0F0F0;
+}
+
+.nav-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.nav-dropdown-item:hover {
+  background-color: #F8FAF8;
+  /* Extremely light green tint on hover */
+}
+
+/* Header Text (e.g., "Blog") */
+.dd-item-header {
+  font-family: 'Manrope', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #222222;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Space between dot and text */
+}
+
+/* The small indicator dot */
+.green-dot {
+  flex-shrink: 0;
+  /* Prevent the dot from changing shape */
+}
+
+/* Description Text */
+.dd-item-desc {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #888888;
+  margin: 0;
+  font-weight: 400;
+}
+
 /* Navbar Responsiveness */
 @media (max-width: 900px) {
   .navbar-left {
@@ -153,8 +241,9 @@ body {
   }
 
   .navbar-center {
-    /* When left nav is gone, ensure center is explicitly positioned against the left side to avoid weird gaps if desired, or keep centered. Let's keep it centered but ensure no overlap. */
-    left: 40px;
+    /* Make center static so it flows naturally in the flex container. With navbar-left hidden, 
+       justify-content: space-between will place navbar-center on the left and navbar-right on the right. */
+    position: static;
     transform: none;
   }
 }
@@ -164,9 +253,7 @@ body {
     padding: 0 20px;
   }
 
-  .navbar-center {
-    left: 20px;
-  }
+  /* Center alignment is handled by flex layout now, no need to adjust 'left' property */
 
   .navbar-right {
     gap: 8px;
@@ -196,8 +283,26 @@ body {
   /* Prevent horizontal scroll from full-bleed bg */
 }
 
-/* Make nav bar start hidden and animate down */
+/* Make nav bar start hidden and animate down only if it has .navbar-animated */
 .navbar {
+  /* Default: instant appearance on page load */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  height: 72px;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+.navbar-animated {
   transform: translateY(-100%);
   animation: navSlideDown 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   animation-delay: 2.0s;
@@ -217,10 +322,10 @@ body {
 /* Hero Section Base */
 .hero-container {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  margin-top: -72px;
-  /* Pull up under the navbar so background covers entire screen */
+  margin-top: 0;
+  /* Navbar is positional, no space displacement */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -270,8 +375,8 @@ body {
   }
 
   100% {
-    clip-path: circle(200% at 50% 50%);
-    /* Arbitrarily large number to guarantee screen fill */
+    clip-path: circle(3000px at 50% 50%);
+    /* Arbitrarily large px number to guarantee screen fill on all displays */
   }
 }
 
@@ -1779,11 +1884,15 @@ body {
 }
 
 .btn-dark:hover {
-  background-color: #444444;
-  /* Slightly lighter black on hover */
-  transform: translateY(-2px);
+  background-color: #222222;
+  /* Keep it midnight black to contrast the white icon */
+  transform: translateY(-4px);
+  /* Noticeable float up */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  /* Sleek drop shadow */
 }
 
+/* Arrow container styling */
 .btn-arrow-icon {
   display: flex;
   align-items: center;
@@ -1792,12 +1901,23 @@ body {
   height: 32px;
   background-color: #FFFFFF;
   border-radius: 50%;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
+  /* Bouncy rotation curve */
+}
+
+/* Arrow SVG itself */
+.btn-arrow-icon svg {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .btn-dark:hover .btn-arrow-icon {
-  transform: translateX(4px);
-  /* Arrow nudges right */
+  transform: scale(1.15);
+  /* The white circle expands slightly */
+}
+
+.btn-dark:hover .btn-arrow-icon svg {
+  transform: rotate(45deg);
+  /* The black arrow flips 180 degrees inside */
 }
 
 /* Right Image Full Bleed */
@@ -1933,7 +2053,7 @@ body {
   font-family: 'Manrope', sans-serif;
   font-weight: 600;
   font-size: 24px;
-  color: #296D3A;
+  color: #257A3F;
   letter-spacing: -0.5px;
 }
 
@@ -2046,6 +2166,240 @@ body {
 
   .footer-legal {
     flex-wrap: wrap;
-    gap: 16px;
+  }
+}
+
+/* =========================================
+   SECTION: Global Request Demo Modal
+   ========================================= */
+
+/* The Glassmorphism Backdrop Overlay */
+.demo-modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(20, 20, 20, 0.4);
+  /* Dark atmospheric wash */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 9999;
+  /* Highest priority */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Hidden state defaults */
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+/* Modal Open State */
+.demo-modal-wrapper.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* The Modal Card Itself */
+.demo-modal-content {
+  display: flex;
+  width: 90%;
+  max-width: 960px;
+  min-height: 500px;
+  height: auto;
+  background: #FFFFFF;
+  border-radius: 24px;
+  overflow: hidden;
+  /* Clips the inner columns */
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+
+  /* Slide up animation initial state */
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.demo-modal-wrapper.is-open .demo-modal-content {
+  transform: translateY(0) scale(1);
+}
+
+/* Left Column: Branding */
+.modal-brand-col {
+  flex: 1;
+  background-color: #1A1A1A;
+  /* Premium Dark */
+  color: #FFFFFF;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.modal-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-logo-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.modal-logo-text {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: -1px;
+  color: #257A3F;
+}
+
+.modal-h2 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin: 40px 0 20px 0;
+}
+
+.modal-p {
+  font-family: 'Manrope', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #A0A0A0;
+  /* Subtle grey text */
+  line-height: 1.5;
+  max-width: 300px;
+}
+
+/* Right Column: Form */
+.modal-form-col {
+  flex: 1.2;
+  background-color: #FFFFFF;
+  padding: 60px;
+  position: relative;
+  /* For absolutely positioning the close button */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Minimalist Close Button */
+.modal-close-btn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close-btn:hover {
+  background-color: #F5F5F5;
+  border-color: #E0E0E0;
+  transform: rotate(90deg);
+  /* Playful spin on X */
+}
+
+.form-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #222222;
+  margin: 0 0 40px 0;
+  letter-spacing: -1px;
+}
+
+/* Form Styles */
+.demo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input-group input {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  color: #222222;
+  padding: 12px 0;
+  border: none;
+  border-bottom: 2px solid #EAEAEA;
+  background: transparent;
+  border-radius: 0;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input::placeholder {
+  color: #CCCCCC;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-bottom-color: #39B15B;
+  /* Daybreak Green highlight */
+}
+
+.modal-submit-btn {
+  margin-top: 16px;
+  align-self: flex-start;
+  /* Additional overrides if necessary, but it mostly inherits .btn-dark */
+}
+
+/* Responsive constraints */
+@media (max-width: 900px) {
+  .demo-modal-content {
+    flex-direction: column;
+    height: 90vh;
+    /* Fill vertical space */
+    overflow-y: auto;
+    /* Allow scrolling on short screens */
+  }
+
+  .modal-brand-col {
+    padding: 40px;
+    flex: none;
+    /* Auto height based on content */
+  }
+
+  .modal-form-col {
+    padding: 40px;
+    flex: none;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .modal-brand-col,
+  .modal-form-col {
+    padding: 30px 20px;
+  }
+
+  .modal-h2 {
+    font-size: 36px;
   }
 }

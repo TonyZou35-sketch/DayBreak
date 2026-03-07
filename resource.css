@@ -1,0 +1,538 @@
+/* =========================================
+   RESOURCE PAGE GLOBAL
+   ========================================= */
+body {
+    background-color: #FAFAFA;
+    /* Off-white minimalist background */
+}
+
+/* =========================================
+   Section 1: Blog Hero
+   ========================================= */
+.resource-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 200px 5vw 120px 5vw;
+    /* Lots of top padding to push down from sticky header */
+    width: 100%;
+}
+
+.resource-badge {
+    border: 1px solid #D6D6D6;
+    /* Subtle grey border */
+    border-radius: 40px;
+    padding: 6px 24px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    color: #555555;
+    margin-bottom: 40px;
+    background-color: transparent;
+}
+
+.resource-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 100px;
+    font-weight: 400;
+    /* Thin modern look */
+    color: #383838;
+    /* Very dark grey, not quite black */
+    line-height: 1.05;
+    letter-spacing: -3px;
+    margin: 0;
+}
+
+.color-green {
+    color: #39B15B;
+    /* Daybreak Green */
+}
+
+.resource-subtitle {
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    color: #666666;
+    /* Mid-grey text */
+    margin-top: 40px;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+/* --- Responsive Layout Adjustments --- */
+@media (max-width: 1024px) {
+    .resource-hero {
+        padding: 160px 4vw 80px 4vw;
+    }
+
+    .resource-title {
+        font-size: 72px;
+        letter-spacing: -2px;
+    }
+
+    .resource-subtitle {
+        font-size: 18px;
+        margin-top: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .resource-hero {
+        padding: 140px 4vw 60px 4vw;
+    }
+
+    .resource-title {
+        font-size: 52px;
+        letter-spacing: -1.5px;
+    }
+
+    .resource-subtitle {
+        font-size: 16px;
+        margin-top: 24px;
+    }
+}
+
+/* =========================================
+   Section 2: Break Barriers
+   ========================================= */
+.break-barriers-section {
+    width: 100%;
+    background-color: #DFE8E4;
+    /* Light mint/grey tint from design */
+    padding: 120px 5vw;
+    display: flex;
+    justify-content: center;
+}
+
+.bb-container {
+    max-width: 1440px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* Left Column Styling */
+.bb-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 40px;
+    /* Give text breathing room from image */
+}
+
+.bb-badge {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    color: #555555;
+    padding: 6px 16px;
+    border: 1px solid #A0A0A0;
+    /* Subtle darker border than bg */
+    border-radius: 40px;
+    margin-bottom: 30px;
+}
+
+.bb-h2 {
+    font-family: 'Inter', sans-serif;
+    /* Matching Hero header font style */
+    font-size: 44px;
+    font-weight: 400;
+    color: #383838;
+    line-height: 1.2;
+    margin: 0 0 24px 0;
+    letter-spacing: -1px;
+}
+
+.bb-p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    color: #555555;
+    line-height: 1.6;
+    margin: 0 0 40px 0;
+    max-width: 450px;
+}
+
+/* Custom dark pill button for this section */
+.btn-bb {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #222222;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 10px 8px 24px;
+    /* Asymmetric padding to center text vs circular icon */
+    border-radius: 40px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-bb:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.bb-arrow-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.bb-arrow-icon svg {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-bb:hover .bb-arrow-icon {
+    transform: scale(1.1);
+}
+
+.btn-bb:hover .bb-arrow-icon svg {
+    transform: rotate(45deg);
+}
+
+/* Right Column: Image */
+.bb-right {
+    width: 100%;
+}
+
+.bb-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Responsive constraints */
+@media (max-width: 900px) {
+    .bb-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .bb-left {
+        padding-right: 0;
+    }
+
+    .bb-h2 {
+        font-size: 36px;
+    }
+}
+
+/* =========================================
+   Section 3: Article Grid
+   ========================================= */
+.article-grid-section {
+    width: 100%;
+    background-color: #FAFAFA;
+    padding: 100px 0 60px 0;
+    /* 100 top + 20 filter = 120. 60 bottom + 60 load = 120 */
+}
+
+/* Filter Bar */
+.filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 5vw;
+    overflow-x: auto;
+    /* Hide scrollbar subtly if it overflows on mobile */
+    scrollbar-width: none;
+}
+
+.filter-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-btn {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    color: #888888;
+    background-color: transparent;
+    border: 1px solid #D6D6D6;
+    /* Subtle outline */
+    border-radius: 40px;
+    padding: 10px 24px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    border-color: #999999;
+    color: #333333;
+}
+
+.filter-btn.active {
+    background-color: #333333;
+    /* Dark fill for active pill */
+    color: #FFFFFF;
+    border-color: #333333;
+}
+
+/* CSS Grid with subtle 1px dividers */
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: #D3D3D3;
+    /* Acts as the "border line" color through the gap */
+    gap: 1px;
+    width: 100%;
+    /* Create top and bottom boundary lines mapping edge to edge */
+    border-top: 1px solid #D3D3D3;
+    border-bottom: 1px solid #D3D3D3;
+}
+
+/* The Cards */
+.article-card {
+    background-color: #FAFAFA;
+    /* Matches body bg, covering the container bg except in gaps */
+    padding: 3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Push image to bottom */
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    min-height: 500px;
+}
+
+.article-card:hover {
+    background-color: #D9ECA6;
+    /* Light lime hover */
+}
+
+/* Card Content: Text */
+.article-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.article-badge {
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
+    color: #555555;
+    padding: 4px 16px;
+    border: 1px solid #A0A0A0;
+    /* slightly darker to appear visible against #fafafa */
+    border-radius: 40px;
+    margin-bottom: 24px;
+}
+
+.article-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #383838;
+    line-height: 1.3;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.5px;
+}
+
+.article-desc {
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    color: #777777;
+    /* Grey desc text */
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Card Content: Image */
+.article-img-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* Center horizontally in card if not 100% wide */
+}
+
+.article-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+/* Load More Section */
+.load-more-section {
+    display: flex;
+    justify-content: center;
+    padding: 60px 0 120px 0;
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 1024px) {
+    .article-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .article-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .article-card {
+        padding: 5vw;
+        min-height: auto;
+    }
+
+    .article-img-wrapper {
+        margin-top: 20px;
+    }
+}
+
+/* =========================================
+   Section 4: Subscribe Banner
+   ========================================= */
+.subscribe-section {
+    position: relative;
+    width: 100%;
+    /* Replicating the design reference's smooth green-to-grey gradient */
+    background: linear-gradient(110deg, #EBF3ED 0%, #D8EBD6 100%);
+    padding: 120px 5vw;
+    /* Deep padding to separate from grid and footer */
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.sub-container {
+    position: relative;
+    z-index: 10;
+    max-width: 1440px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Left Column: Text */
+.sub-text-col {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+}
+
+.sub-pretitle {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    color: #888888;
+    margin-bottom: 12px;
+}
+
+.sub-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: #222222;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin: 0;
+}
+
+/* Right Column: Form */
+.sub-form-col {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.sub-form {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Pill Input */
+.sub-input {
+    min-width: 280px;
+    background-color: #FFFFFF;
+    /* Clean white background like reference */
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    /* Extremely faint border to define edges */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    /* Very soft shadow for separation */
+    border-radius: 40px;
+    padding: 16px 24px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    color: #333333;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.sub-input::placeholder {
+    color: #A0A0A0;
+}
+
+.sub-input:focus {
+    border-color: #999999;
+}
+
+/* Subscription Button with requested Hover Invert */
+.sub-btn {
+    background-color: #222222;
+    color: #FFFFFF;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 16px 36px;
+    border: 1px solid #222222;
+    /* Start with matching border so layout doesnt shift on hover */
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Requested Hover Effect: Invert to white background, dark text/border */
+.sub-btn:hover {
+    background-color: #FFFFFF !important;
+    color: #222222 !important;
+    border-color: #222222 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .sub-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+    }
+
+    .sub-form {
+        width: 100%;
+    }
+
+    .sub-input {
+        flex: 1;
+        /* Take up remaining space */
+    }
+}
+
+@media (max-width: 600px) {
+    .sub-form {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+    }
+
+    .sub-input {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .sub-btn {
+        width: 100%;
+    }
+}

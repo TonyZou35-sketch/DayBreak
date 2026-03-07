@@ -13,12 +13,54 @@
 
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar">
+    <nav class="navbar navbar-animated">
         <div class="navbar-left">
-            <a href="#" class="nav-link">PRODUCT</a>
-            <a href="#" class="nav-link">ABOUT US</a>
-            <a href="#" class="nav-link">RESOURCE</a>
-            <a href="#" class="nav-link">CAREERS</a>
+            <a href="product.html" class="nav-link">Product</a>
+            <!-- Dropdown Wrapper for About Us -->
+            <div class="nav-dropdown-wrapper">
+                <a href="vision.html" class="nav-link">About Us</a>
+
+                <!-- The Dropdown Card -->
+                <div class="nav-dropdown">
+                    <!-- Item 1 -->
+                    <a href="vision.html" class="nav-dropdown-item">
+                        <div class="dd-item-header">
+                            Vision & Mission
+                        </div>
+                        <p class="dd-item-desc">Our story, values and what<br>drives us forward</p>
+                    </a>
+                    <!-- Item 2 -->
+                    <a href="about.html" class="nav-dropdown-item">
+                        <div class="dd-item-header">
+                            Our Team
+                        </div>
+                        <p class="dd-item-desc">Meet the operators,<br>technologists and AI leaders</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Dropdown Wrapper for Resource -->
+            <div class="nav-dropdown-wrapper">
+                <a href="resource.html" class="nav-link">Resource</a>
+
+                <!-- The Dropdown Card -->
+                <div class="nav-dropdown">
+                    <!-- Item 1 -->
+                    <a href="resource.html" class="nav-dropdown-item">
+                        <div class="dd-item-header">
+                            Blog
+                        </div>
+                        <p class="dd-item-desc">Insights, updates and<br>stories from the Daybreak<br>team</p>
+                    </a>
+                    <!-- Item 2 -->
+                    <a href="ai-labor-model.html" class="nav-dropdown-item">
+                        <div class="dd-item-header">AI Labor Model</div>
+                        <p class="dd-item-desc">How AI and human work come<br>together in our framework</p>
+                    </a>
+                </div>
+            </div>
+
+            <a href="careers.html" class="nav-link">Careers</a>
         </div>
 
         <div class="navbar-center">
@@ -29,7 +71,6 @@
         </div>
 
         <div class="navbar-right">
-            <a href="#" class="btn btn-outline">Contact us</a>
             <a href="#" class="btn btn-solid">
                 <img src="Assets/NavBar/Dawn Logo.svg" alt="Dawn Logo" class="btn-icon">
                 Request Demo
@@ -163,16 +204,16 @@
             </div>
 
             <!-- Bottom Floating CTA -->
-            <button class="md-cta-btn">
-                <span class="md-cta-text">Evaluate AI Labour</span>
-                <span class="md-cta-icon">
-                    <!-- Inline SVG for precise control of the upwards arrow -->
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="#222222" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
+            <!-- Bottom Floating CTA -->
+            <a href="#" class="btn-dark" style="margin-top: 60px;">
+                Evaluate AI Labor
+                <span class="btn-arrow-icon">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 11L11 1M11 1V10.1667M11 1H1.83333" stroke="#222222" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </span>
-            </button>
+            </a>
         </div>
     </section>
 
@@ -501,8 +542,8 @@
             <p class="cta-p">Daybreak is the first AI labor platform for demand planning. It changes your cost structure
                 and makes decision quality measurable. It puts planners where their judgment has the most leverage — not
                 on every SKU, but on the meaning behind the numbers. The baseline runs. The meaning compounds.</p>
-            <a href="#" class="btn-dark">
-                Evaluate AI Labor
+            <a href="#" class="btn-dark" id="ctaRequestDemoBtn">
+                Request Demo
                 <span class="btn-arrow-icon">
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 11L11 1M11 1V10.1667M11 1H1.83333" stroke="#222222" stroke-width="2"
@@ -522,32 +563,22 @@
             <div class="footer-logo">
                 <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg"
                     class="footer-logo-svg">
-                    <!-- Changed fill to brand green -->
-                    <path opacity="0.9"
+                    <path
                         d="M13.0078 0C20.1919 0 26.0156 5.82367 26.0156 13.0078C26.0156 20.192 20.192 26.0156 13.0078 26.0156C5.82378 26.0155 0 20.1919 0 13.0078C2.10991e-05 5.82376 5.82379 0.0001362 13.0078 0ZM13.0059 8.45801C9.83164 8.45803 7.25805 10.9667 7.25781 14.0615C7.25781 17.1565 9.83149 19.666 13.0059 19.666C16.1802 19.666 18.7539 17.1566 18.7539 14.0615C18.7537 10.9667 16.1801 8.45801 13.0059 8.45801Z"
-                        fill="#3D854F" />
+                        fill="#39B15B" />
                     <path
                         d="M26.0161 13.0081C26.0161 16.458 24.6456 19.7667 22.2061 22.2062C19.7666 24.6456 16.458 26.0161 13.008 26.0161C9.5581 26.0161 6.24945 24.6456 3.80997 22.2062C1.37049 19.7667 5.20928e-07 16.458 0 13.0081L13.008 13.0081L26.0161 13.0081Z"
-                        fill="#296D3A" />
+                        fill="#257A3F" />
                 </svg>
                 <span class="footer-logo-text">daybreak</span>
             </div>
 
             <ul class="footer-nav">
                 <li><a href="#">Product</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Resource</a></li>
-                <li><a href="#">Careers</a></li>
+                <li><a href="vision.html">About Us</a></li>
+                <li><a href="resource.html">Resource</a></li>
+                <li><a href="careers.html">Careers</a></li>
                 <li><a href="#">Linkedin</a></li>
-                <li>
-                    <span class="footer-icon-decoration">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="1.5"
-                            style="transform: translateY(2px);">
-                            <circle cx="8" cy="12" r="5" />
-                            <circle cx="16" cy="12" r="5" />
-                        </svg>
-                    </span>
-                </li>
             </ul>
         </div>
 
@@ -565,6 +596,79 @@
             </div>
         </div>
     </footer>
+
+    <!-- =========================================
+         GLOBAL: Request Demo Modal
+         ========================================= -->
+    <div class="demo-modal-wrapper" id="requestDemoModal">
+        <div class="demo-modal-content">
+            <!-- Left Branding Column -->
+            <div class="modal-brand-col">
+                <div class="modal-logo">
+                    <img src="Assets/NavBar/Daybreak Logo.svg" alt="Daybreak Logo" class="modal-logo-icon">
+                    <span class="modal-logo-text">daybreak</span>
+                </div>
+                <h2 class="modal-h2">See Daybreak<br>in Action</h2>
+                <p class="modal-p">Dawn doesn't displace human authority—she clarifies it. That's the transaction.</p>
+            </div>
+
+            <!-- Right Form Column -->
+            <div class="modal-form-col">
+                <button class="modal-close-btn" id="closeModalBtn" aria-label="Close modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#222222" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+
+                <h3 class="form-title">Request a Demo</h3>
+                <form class="demo-form" id="demoForm">
+                    <div class="input-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" placeholder="Jane Doe" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="workEmail">Work Email</label>
+                        <input type="email" id="workEmail" placeholder="jane@company.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="companyName">Company</label>
+                        <input type="text" id="companyName" placeholder="Acme Corp" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="jobTitle">Job Title</label>
+                        <input type="text" id="jobTitle" placeholder="VP of Operations" required>
+                    </div>
+
+                    <button type="submit" class="btn-dark modal-submit-btn">
+                        Schedule My Demo
+                        <span class="btn-arrow-icon">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 11L11 1M11 1V10.1667M11 1H1.83333" stroke="#222222" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </button>
+                </form>
+
+                <!-- Hidden Success State -->
+                <div class="demo-success-msg" id="demoSuccessMsg"
+                    style="display: none; height: 100%; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        style="margin-bottom: 24px;">
+                        <circle cx="12" cy="12" r="10" fill="#E8F5E9" />
+                        <path d="M8 12.5L10.5 15L16 9" stroke="#39B15B" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                    <h3 class="form-title" style="margin-bottom: 12px;">Request Received</h3>
+                    <p class="modal-p" style="color: #666666; max-width: 100%;">Our team will contact you shortly to
+                        schedule your personalized demo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Interaction Scripts -->
     <script>
@@ -851,6 +955,105 @@
                         chars[index].style.color = randomColor;
                     });
                 }, 1000); // Change colors every 1 second
+            }
+
+            // =========================================
+            // Global Request Demo Modal Logic
+            // =========================================
+            const requestDemoModal = document.getElementById('requestDemoModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            // Select all buttons that should trigger the modal (Navbar solid buttons)
+            const demoTriggerBtns = document.querySelectorAll('.navbar-right .btn-solid');
+
+            if (requestDemoModal && closeModalBtn && demoTriggerBtns.length > 0) {
+                // Open Modal via navbar button
+                demoTriggerBtns.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        requestDemoModal.classList.add('is-open');
+                        document.body.style.overflow = 'hidden';
+                    });
+                });
+
+                // Also open from CTA section button
+                const ctaBtn = document.getElementById('ctaRequestDemoBtn');
+                if (ctaBtn) {
+                    ctaBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        requestDemoModal.classList.add('is-open');
+                        document.body.style.overflow = 'hidden';
+                    });
+                }
+
+                // Close Modal via X Button
+                closeModalBtn.addEventListener('click', () => {
+                    requestDemoModal.classList.remove('is-open');
+                    document.body.style.overflow = ''; // Restore scrolling
+                });
+
+                // Close Modal via clicking the Glassmorphism Backdrop
+                requestDemoModal.addEventListener('click', (e) => {
+                    // Only close if they clicked the wrapper itself, not the content inside
+                    if (e.target === requestDemoModal) {
+                        requestDemoModal.classList.remove('is-open');
+                        document.body.style.overflow = '';
+                    }
+                });
+
+                // Close Modal via ESC key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && requestDemoModal.classList.contains('is-open')) {
+                        closeAndResetModal();
+                    }
+                });
+
+                // Handle Form Submission Without Page Reload
+                const demoForm = document.getElementById('demoForm');
+                const demoSuccessMsg = document.getElementById('demoSuccessMsg');
+
+                if (demoForm && demoSuccessMsg) {
+                    demoForm.addEventListener('submit', (e) => {
+                        e.preventDefault(); // Stop the page from reloading
+
+                        // Fake an API call delay for UX
+                        const submitBtn = demoForm.querySelector('button[type="submit"]');
+                        const originalText = submitBtn.innerHTML;
+                        submitBtn.innerHTML = 'Sending...';
+                        submitBtn.style.pointerEvents = 'none';
+
+                        setTimeout(() => {
+                            // Hide the form, show the success message inline
+                            demoForm.style.display = 'none';
+                            demoSuccessMsg.style.display = 'flex';
+
+                            // Reset button state for next time
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.style.pointerEvents = 'auto';
+                            demoForm.reset();
+                        }, 800);
+                    });
+                }
+
+                // Helper to close and reset the modal state entirely
+                function closeAndResetModal() {
+                    requestDemoModal.classList.remove('is-open');
+                    document.body.style.overflow = '';
+
+                    // Delay the DOM reset until after the CSS fade-out transition finishes
+                    setTimeout(() => {
+                        if (demoForm && demoSuccessMsg) {
+                            demoForm.style.display = 'flex';
+                            demoSuccessMsg.style.display = 'none';
+                            demoForm.reset();
+                        }
+                    }, 400);
+                }
+
+                // Refactor existing close listeners to use this helper
+                closeModalBtn.addEventListener('click', closeAndResetModal);
+                requestDemoModal.addEventListener('click', (e) => {
+                    if (e.target === requestDemoModal) closeAndResetModal();
+                });
             }
 
         });

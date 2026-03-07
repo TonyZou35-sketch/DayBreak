@@ -1,0 +1,814 @@
+/* =========================================
+   AI Labor Model Page Styles
+   ========================================= */
+
+/* Use the main container wrapper from index.css for consistency if needed, 
+   but we'll build a specific hero section here. */
+
+.alm-hero {
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    background-color: #F8F9FA;
+    /* Light off-white background matching design */
+    padding-top: 160px;
+    padding-bottom: 80px;
+    padding-left: max(5vw, calc(50vw - 600px));
+    padding-right: max(5vw, calc(50vw - 600px));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* -----------------------------------------
+   Left Text Column
+   ----------------------------------------- */
+.alm-hero-left {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 10;
+}
+
+.alm-pretitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #888888;
+    margin-bottom: 24px;
+    text-transform: capitalize;
+}
+
+.alm-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 96px;
+    /* Massive display text */
+    font-weight: 400;
+    line-height: 1.05;
+    color: #222222;
+    margin: 0 0 32px 0;
+    letter-spacing: -2px;
+}
+
+.alm-subtitle {
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #444444;
+    line-height: 1.5;
+    max-width: 400px;
+}
+
+/* -----------------------------------------
+   Right Visual Container
+   ----------------------------------------- */
+.alm-hero-right {
+    width: 55%;
+    position: relative;
+    height: 500px;
+    /* Fixed height to anchor absolute elements */
+    perspective: 1000px;
+    z-index: 5;
+}
+
+/* -----------------------------------------
+   Animated Lines & Squints Container Structure
+   ----------------------------------------- */
+
+/* Instead of just a gap list, let's map them to specific heights to match dots */
+.alm-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.alm-line {
+    position: absolute;
+    width: 80px;
+    /* slightly longer lines */
+    height: 2px;
+    border-radius: 2px;
+    opacity: 0;
+    /* Start hidden for animation */
+    left: 5%;
+    /* Start slightly off-center left */
+}
+
+/* Green Row (Top) */
+.alm-line.green {
+    top: 25%;
+    background-color: #3ABB60;
+    animation: lineFlow 2.5s infinite linear;
+}
+
+/* Lime Row (Middle) */
+.alm-line.lime {
+    top: 50%;
+    background-color: #B2D136;
+    animation: lineFlow 3s infinite linear 1s;
+}
+
+/* Blue Row (Bottom) */
+.alm-line.blue {
+    top: 75%;
+    left: 45%;
+    /* Shift start point to the right */
+    background-color: #47A1DE;
+    animation: lineFlow 2.2s infinite linear 0.5s;
+}
+
+/* Longer, faster flow crossing the squints */
+@keyframes lineFlow {
+    0% {
+        transform: translateX(0);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(250px);
+        /* Travel entirely across the dot area */
+        opacity: 0;
+    }
+}
+
+/* -----------------------------------------
+   Animated Squints (Rounded Rectangles)
+   ----------------------------------------- */
+.alm-squint {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    /* Smooth rounded corners */
+}
+
+/* Placement matching the specific horizontal rows defined above */
+.alm-squint.green {
+    background-color: #51AF6F;
+    top: calc(25% - 12px);
+    /* Centered vertically on the 25% line */
+    left: 28%;
+    /* Just far enough for line to hit it */
+    animation: squintPulse 3s infinite alternate ease-in-out;
+}
+
+.alm-squint.lime {
+    background-color: #B4D64D;
+    top: calc(50% - 12px);
+    left: 42%;
+    animation: squintPulse 4s infinite alternate ease-in-out 1s;
+}
+
+.alm-squint.blue {
+    background-color: #53A0D9;
+    top: calc(75% - 12px);
+    left: 70%;
+    /* Moved right to align underneath top-right card */
+    animation: squintPulse 3.5s infinite alternate ease-in-out 0.5s;
+}
+
+/* Slow scaling pulse effect */
+@keyframes squintPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.4);
+    }
+}
+
+/* -----------------------------------------
+   Data Cards
+   ----------------------------------------- */
+.alm-stat-card {
+    position: absolute;
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 32px 36px;
+    min-width: 220px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
+    /* Light 3D floating effect */
+    z-index: 10;
+}
+
+.alm-stat-card.top-right {
+    top: 15%;
+    right: 5%;
+}
+
+.alm-stat-card.bottom-left {
+    bottom: 5%;
+    left: 10%;
+}
+
+.alm-stat-val {
+    font-family: 'Inter', sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: #222222;
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+}
+
+.alm-stat-desc {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    color: #888888;
+    line-height: 1.5;
+}
+
+/* Responsive adjustments */
+/* =========================================
+   Middleware Section
+   ========================================= */
+.alm-middleware {
+    width: 100%;
+    background-color: #F8F9FA;
+    padding-top: 240px;
+    /* Increased to push further down from hero animation */
+    padding-bottom: 120px;
+    padding-left: max(5vw, calc(50vw - 600px));
+    padding-right: max(5vw, calc(50vw - 600px));
+}
+
+.alm-middleware-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.alm-mw-icon {
+    width: 32px;
+    height: auto;
+    margin-bottom: 40px;
+}
+
+.alm-mw-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 56px;
+    font-weight: 500;
+    color: #222222;
+    line-height: 1.1;
+    margin: 0 0 32px 0;
+    letter-spacing: -1.5px;
+}
+
+.alm-mw-desc {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    color: #555555;
+    line-height: 1.6;
+    margin: 0 0 80px 0;
+    max-width: 800px;
+}
+
+/* Stats Grid */
+.alm-mw-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid #E4E4E4;
+}
+
+/* The cards */
+.alm-mw-card {
+    padding: 48px 40px;
+    border-right: 1px solid #E4E4E4;
+    display: flex;
+    flex-direction: column;
+}
+
+.alm-mw-card:last-child {
+    border-right: none;
+}
+
+.mw-card-val {
+    font-family: 'Inter', sans-serif;
+    font-size: 80px;
+    font-weight: 400;
+    color: #222222;
+    margin-bottom: 12px;
+    letter-spacing: -3px;
+}
+
+.mw-card-desc {
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    color: #444444;
+    line-height: 1.4;
+    margin-bottom: 60px;
+    flex-grow: 1;
+    /* Pushes the source to the bottom */
+}
+
+.mw-card-source {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    color: #999999;
+}
+
+/* =========================================
+   Category of Labor Section
+   ========================================= */
+.alm-category-labor {
+    width: 100%;
+    /* Layered elegant background: Warm off-white base with soft green glow centered, fading outward */
+    background-color: #F4F6F2;
+    background-image:
+        linear-gradient(to bottom, #F8F9FA 0%, rgba(248, 249, 250, 0) 15%),
+        linear-gradient(to top, #F8F9FA 0%, rgba(248, 249, 250, 0) 15%),
+        radial-gradient(circle at 60% 50%, rgba(210, 235, 215, 0.8) 0%, rgba(230, 242, 233, 0.4) 40%, rgba(244, 246, 242, 0) 80%);
+    padding-top: 180px;
+    padding-bottom: 180px;
+    padding-left: max(5vw, calc(50vw - 600px));
+    padding-right: max(5vw, calc(50vw - 600px));
+}
+
+.alm-category-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.alm-cat-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 96px;
+    font-weight: 300;
+    /* Very elegant thin text */
+    color: #2E302D;
+    line-height: 1.05;
+    margin: 0 0 40px 0;
+    letter-spacing: -3.5px;
+}
+
+.alm-cat-desc {
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.6;
+    margin: 0 0 50px 0;
+    max-width: 500px;
+}
+
+.alm-cat-divider {
+    width: 100%;
+    max-width: 650px;
+    height: 1px;
+    background-color: #DCDED9;
+    margin: 0 0 32px 0;
+}
+
+.alm-cat-footer {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    max-width: 700px;
+}
+
+.alm-cat-squares {
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+    /* Optical alignment with cap height */
+}
+
+.alm-cat-squares span {
+    display: block;
+    width: 14px;
+    height: 14px;
+    background-color: #BEC2BB;
+}
+
+.alm-cat-footer-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: #383A36;
+    line-height: 1.35;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+/* =========================================
+   Governed Autonomy Section
+   ========================================= */
+.alm-governance {
+    background-color: #F8F9FA;
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 160px;
+    padding-left: max(5vw, calc(50vw - 600px));
+    padding-right: max(5vw, calc(50vw - 600px));
+}
+
+.alm-gov-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.alm-gov-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 64px;
+    font-weight: 400;
+    color: #2E302D;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin: 0 0 24px 0;
+}
+
+.alm-gov-desc {
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.5;
+    margin: 0 0 60px 0;
+}
+
+.alm-gov-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.alm-gov-card {
+    border-radius: 12px;
+    padding: 60px;
+}
+
+.legacy-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E4E4E4;
+}
+
+.daybreak-card {
+    background-color: #E8F4E9;
+    /* Pale green */
+    border: 1px solid #CDE2CF;
+}
+
+.gov-card-header {
+    margin-bottom: 40px;
+}
+
+.gov-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.legacy-label {
+    color: #888888;
+}
+
+.daybreak-label {
+    color: #4CAF50;
+    /* Green */
+}
+
+.gov-card-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 42px;
+    font-weight: 400;
+    color: #2E302D;
+    margin: 0;
+    letter-spacing: -1.5px;
+}
+
+.gov-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.gov-features li {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+}
+
+.legacy-card .gov-features li {
+    border-bottom: 1px solid #E4E4E4;
+}
+
+.daybreak-card .gov-features li {
+    border-bottom: 1px solid #CDE2CF;
+}
+
+.gov-features li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.gov-feature-name {
+    color: #444444;
+}
+
+.gov-feature-val {
+    text-align: right;
+}
+
+.legacy-val {
+    color: #999999;
+}
+
+.daybreak-val {
+    color: #4CAF50;
+    /* Green */
+}
+
+.alm-cat-divider {
+    width: 100%;
+    max-width: 650px;
+    height: 1px;
+    background-color: #DCDED9;
+    margin: 0 0 32px 0;
+}
+
+.alm-cat-footer {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    max-width: 700px;
+}
+
+.alm-cat-squares {
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+    /* Optical alignment with cap height */
+}
+
+.alm-cat-squares span {
+    display: block;
+    width: 14px;
+    height: 14px;
+    background-color: #BEC2BB;
+}
+
+.alm-cat-footer-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: #383A36;
+    line-height: 1.35;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+/* =========================================
+   Three Pillars of Daybreak Operating Model (Sticky Scroll)
+   ========================================= */
+.alm-pillars-section {
+    position: relative;
+    /* Height dictates how long the scroll lasts. 
+       300vh = 3 sections * 100vh */
+    height: 300vh;
+    width: 100%;
+    background-color: #F8F9FA;
+}
+
+.alm-pillars-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    /* Viewport height ensures it fills the screen while scrolling */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    /* Center horizontally in viewport */
+    overflow: hidden;
+}
+
+.alm-pillars-grid {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* Left Column */
+.alm-pillars-left {
+    width: 60%;
+    padding-left: max(5vw, calc(50vw - 600px));
+    padding-right: 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.alm-pillars-icon {
+    width: 32px;
+    height: auto;
+    margin-bottom: 24px;
+}
+
+.alm-pillars-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 56px;
+    font-weight: 500;
+    color: #2E302D;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin: 0 0 24px 0;
+}
+
+.alm-pillars-desc {
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.5;
+    margin: 0 0 60px 0;
+}
+
+/* Interactive Index Nav (Left side) */
+.alm-pillars-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 800px;
+}
+
+.alm-nav-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 0;
+    border-bottom: 1px solid #DCDED9;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s ease;
+}
+
+.alm-nav-item:first-child {
+    border-top: 1px solid #DCDED9;
+}
+
+.alm-nav-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #DBDDDA;
+    /* Inactive color */
+    margin: 0;
+    letter-spacing: -1px;
+    transition: color 0.3s ease;
+}
+
+.alm-nav-icon {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: #DBDDDA;
+    /* Inactive color */
+    transition: color 0.3s ease;
+}
+
+/* Active State for Nav Items */
+.alm-nav-item.is-active .alm-nav-title,
+.alm-nav-item.is-active .alm-nav-icon {
+    color: #2E302D;
+}
+
+/* Right Column (Images & Text Stack) */
+.alm-pillars-right {
+    width: 40%;
+    height: 100%;
+    background-color: #F8F9FA;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 140px 5vw 60px 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Image Stack Area (Top 65% visually) */
+.alm-pillars-img-stack {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    /* Take up remaining vertical space above text */
+    overflow: hidden;
+}
+
+.alm-pillar-img-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    z-index: 1;
+}
+
+.alm-pillar-img-wrapper.is-active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.alm-pillar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center left;
+}
+
+/* Fake placeholder style */
+.placeholder-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E2E2E2;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    color: #A0A0A0;
+    border: 1px dashed #C0C0C0;
+    box-sizing: border-box;
+}
+
+.alm-pillar-spinner {
+    position: absolute;
+    bottom: 40px;
+    right: 48px;
+    width: 104.5px;
+    height: 104.5px;
+    opacity: 1;
+    /* Restored opacity so it looks like a proper icon */
+    z-index: 3;
+    pointer-events: none;
+    transform-origin: center center;
+}
+
+/* Removing automatic rotateSlowly animation, JS will handle transform */
+
+/* Text Stack Area (Bottom 35%) */
+.alm-pillars-text-stack {
+    position: relative;
+    width: 100%;
+    height: 28%;
+    /* Adjust to fit below image flexibly */
+    background-color: #F8F9FA;
+    padding: 32px 10% 24px 6%;
+    box-sizing: border-box;
+}
+
+.alm-pillar-text {
+    position: absolute;
+    top: 40px;
+    left: 6%;
+    right: 10%;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+    /* Prevent overlapping click issues */
+}
+
+.alm-pillar-text.is-active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.alm-pillar-text p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    color: #777777;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 992px) {
+    .alm-hero {
+        flex-direction: column;
+        padding-top: 120px;
+    }
+
+    .alm-hero-left,
+    .alm-hero-right {
+        width: 100%;
+    }
+
+    .alm-hero-title {
+        font-size: 72px;
+    }
+
+    .alm-hero-right {
+        margin-top: 60px;
+    }
+}

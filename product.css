@@ -1,0 +1,625 @@
+/* =========================================
+   Product Page Stylesheet
+   ========================================= */
+
+/* Use the global variables from index.css for fonts and colors.
+   Do not redefine body or nav/footer styles here, they are imported via index.css */
+
+/* =========================================
+   Section 1: What Dawn Delivers
+   ========================================= */
+/* Disable the homepage intro animation for the Navbar on this page only */
+.navbar {
+    transform: translateY(0) !important;
+    animation: none !important;
+}
+
+.dawn-delivers {
+    width: 100%;
+    background-color: #F8F8F8;
+    /* Light gray to match the design */
+    padding: 180px 5vw 120px 5vw;
+    /* Generous top padding to clear fixed navbar */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    /* Prevent floating cards from triggering scrollbars if they clip */
+}
+
+/* Headings */
+.dd-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 64px;
+    font-weight: 500;
+    color: #383838;
+    margin: 0 0 16px 0;
+    letter-spacing: -2px;
+}
+
+.color-green {
+    color: #39B15B;
+    /* Updated specific bright green per user reference */
+}
+
+.dd-subtitle {
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    color: #383838;
+    margin: 0 0 100px 0;
+    max-width: 600px;
+}
+
+/* 5-Column Floating Card Layout */
+.dd-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* Prevent flex-stretch from forcing them all to the same height */
+    gap: 20px;
+    width: 100%;
+    max-width: 1400px;
+    margin-bottom: 80px;
+}
+
+/* Individual Card */
+.dd-card {
+    flex: 1;
+    min-width: 220px;
+    max-width: 260px;
+    aspect-ratio: 4 / 5;
+    /* Creating the tall rectangular shape */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    /* Push text to the bottom */
+    padding: 30px 20px;
+    /* Applying the floating hover animation */
+    animation: float-up-down 6s ease-in-out infinite;
+}
+
+/* Background Color Variants matching the design */
+.card-bg-1 {
+    background-color: #D6EAE6;
+}
+
+/* Pale Blue-Green */
+.card-bg-2 {
+    background-color: #E1ECE0;
+}
+
+/* Pale Gray-Green */
+.card-bg-3 {
+    background-color: #D9EE9A;
+}
+
+/* Bright Yellow-Green */
+.card-bg-4 {
+    background-color: #E1EBE0;
+}
+
+/* Pale Gray-Green */
+.card-bg-5 {
+    background-color: #D6EAE6;
+}
+
+/* Pale Blue-Green */
+
+/* Asymmetrical layout: outer cards big, inner ones small */
+.dd-card:nth-child(1),
+.dd-card:nth-child(5) {
+    min-width: 240px;
+    max-width: 280px;
+    aspect-ratio: 4 / 5.2;
+    /* Tallest */
+}
+
+.dd-card:nth-child(2),
+.dd-card:nth-child(4) {
+    min-width: 220px;
+    max-width: 250px;
+    aspect-ratio: 4 / 4.7;
+    /* Medium height */
+}
+
+.dd-card:nth-child(3) {
+    min-width: 200px;
+    max-width: 230px;
+    aspect-ratio: 4 / 4.2;
+    /* Smallest height, more squared */
+}
+
+/* Staggered Animation Delays to create natural biological rhythm */
+.dd-card:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.dd-card:nth-child(2) {
+    animation-delay: -1.2s;
+}
+
+.dd-card:nth-child(3) {
+    animation-delay: -3.5s;
+}
+
+.dd-card:nth-child(4) {
+    animation-delay: -2.1s;
+}
+
+.dd-card:nth-child(5) {
+    animation-delay: -4.8s;
+}
+
+/* SVG Icon Positioning */
+.dd-icon-wrapper {
+    flex: 1;
+    /* Takes up available space pushing text down */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.dd-icon-wrapper img {
+    width: 100px;
+    /* Resize SVGs uniformly */
+    height: auto;
+    object-fit: contain;
+}
+
+/* Card Text */
+.dd-card-text {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #383838;
+    text-align: center;
+    margin: 0;
+    height: 60px;
+    /* Fixed height so all text blocks align uniformly */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+/* High-Performance Hardware Accelerated Hover Frame */
+@keyframes float-up-down {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(0.5deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .dd-card {
+        min-width: 180px;
+    }
+}
+
+@media (max-width: 980px) {
+    .dd-cards-container {
+        padding: 0 5%;
+    }
+}
+
+@media (max-width: 768px) {
+    .dawn-delivers {
+        padding-top: 140px;
+    }
+
+    .dd-title {
+        font-size: 48px;
+    }
+
+    .dd-card {
+        min-width: calc(50% - 20px);
+        /* Stack 2x2 with odd one out on mobile */
+        aspect-ratio: 1;
+        /* Squarer on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .dd-card {
+        min-width: 100%;
+        /* Fully stacked on tiny screens */
+        aspect-ratio: auto;
+        padding-top: 60px;
+    }
+}
+
+/* =========================================
+   Section 2: How Dawn Works (Scroll-Spy)
+   ========================================= */
+.hdw-section {
+    width: 100%;
+    background-color: #F8F8F8;
+    /* matches the section above for seamless edge */
+    background-image: radial-gradient(ellipse at 50% 50%, #E0EFE4 0%, #F8F8F8 60%);
+    background-attachment: fixed;
+    background-size: 100vw 100vh;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hdw-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 52px;
+    font-weight: 500;
+    color: #222222;
+    text-align: center;
+    margin: 0;
+    padding: 120px 0 60px 0;
+    letter-spacing: -1.5px;
+}
+
+/* The scrollable tunnel. E.g. 100vh per step = 500vh total */
+.hdw-container {
+    height: 500vh;
+    position: relative;
+}
+
+/* The viewport that pins itself to the screen */
+.hdw-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    /* Create a 40/60 split layout */
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: center;
+    padding: 0 8vw;
+    gap: 6vw;
+    box-sizing: border-box;
+}
+
+/* --- Left Menu Column --- */
+.hdw-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    /* Push it rightwards to meet the media column reasonably */
+}
+
+.hdw-menu-item {
+    font-family: 'Manrope', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #A0A0A0;
+    /* Inactive grey */
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #D6D6D6;
+    /* Clean divider */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 0;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+/* Remove bottom border on last item for cleanliness */
+.hdw-menu-item:last-child {
+    border-bottom: none;
+}
+
+.hdw-menu-icon {
+    font-size: 28px;
+    font-weight: 400;
+    color: inherit;
+}
+
+/* Active Menu Item States */
+.hdw-menu-item.is-active {
+    color: #222222;
+    font-weight: 600;
+}
+
+.hdw-menu-item:hover {
+    color: #666666;
+}
+
+.hdw-menu-item.is-active:hover {
+    color: #222222;
+    /* Keep dark when active */
+}
+
+/* --- Right Media Column --- */
+.hdw-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    /* Maintain standard video format */
+    background-color: #222222;
+    border-radius: 8px;
+    /* Slight rounding for polish */
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1);
+}
+
+.hdw-media-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #282828;
+    /* Slightly lighter dark grey for contrast */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Crossfade logic */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.hdw-media-item.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Placeholder Text */
+.hdw-media-label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    color: #EAEAEA;
+    letter-spacing: 0.5px;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 900px) {
+    .hdw-sticky {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        /* Stack vertically */
+        padding: 4vw;
+        gap: 4vw;
+        height: auto;
+        min-height: 100vh;
+        align-content: center;
+    }
+
+    .hdw-menu {
+        max-width: 100%;
+        margin-left: 0;
+        margin-bottom: 2rem;
+    }
+
+    .hdw-menu-item {
+        font-size: 20px;
+        padding: 20px 0;
+    }
+
+    .hdw-title {
+        padding: 80px 0 40px 0;
+        font-size: 40px;
+    }
+}
+
+/* =========================================
+   Section 3: What Dawn Does for You (Scroll-Spy)
+   ========================================= */
+.wdd-section {
+    width: 100%;
+    /* Bright, very light yellow-green background from the design */
+    background-color: #DDEBB4;
+    position: relative;
+    padding-top: 100px;
+    /* Space above border */
+}
+
+/* The distinct top dashed line and header */
+.wdd-top-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 44px;
+    font-weight: 500;
+    color: #222222;
+    margin: 0 5vw 40px 5vw;
+    padding-bottom: 24px;
+    border-bottom: 1px dashed #7A9F73;
+    /* Slightly darker green dashed line */
+    letter-spacing: -1px;
+}
+
+/* The scrollable tunnel. E.g. 100vh per step = 500vh total */
+.wdd-container {
+    height: 500vh;
+    position: relative;
+}
+
+/* The viewport that pins itself to the screen */
+.wdd-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 5vw;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* --- Core Grid Layout (Text vs Image) --- */
+.wdd-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8vw;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 80px;
+    /* Space for the bottom nav */
+}
+
+/* --- Left Column: Text Stack --- */
+.wdd-text-stack {
+    position: relative;
+    width: 100%;
+    min-height: 350px;
+    /* Ensure enough height for the longest text block */
+}
+
+.wdd-text-item {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+
+    /* Crossfade */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.wdd-text-item.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.wdd-text-item h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 64px;
+    font-weight: 400;
+    /* Thin look matching reference */
+    color: #222222;
+    line-height: 1.05;
+    margin: 0 0 40px 0;
+    letter-spacing: -2.5px;
+}
+
+.wdd-text-item p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #383838;
+    margin: 0;
+    max-width: 450px;
+}
+
+/* --- Right Column: Image Stack --- */
+.wdd-image-stack {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+}
+
+.wdd-image-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+
+    /* Crossfade */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.wdd-image-item.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- Bottom Navigation --- */
+.wdd-nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 24px;
+}
+
+.wdd-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    /* Default Inactive State */
+    color: #8C9F7F;
+    /* Dark greenish-grey */
+    transition: all 0.3s ease;
+}
+
+.wdd-nav-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px dashed #AABF9B;
+    /* Dashed ring for inactive */
+    transition: all 0.3s ease;
+}
+
+.wdd-nav-label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+/* Active Nav State */
+.wdd-nav-item.is-active {
+    color: #222222;
+}
+
+.wdd-nav-item.is-active .wdd-nav-num {
+    border: 1px solid #222222;
+    /* Solid black ring for active */
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .wdd-content-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .wdd-text-stack {
+        min-height: 250px;
+    }
+
+    .wdd-text-item h3 {
+        font-size: 48px;
+    }
+
+    .wdd-nav {
+        flex-wrap: wrap;
+        /* Allow nav items to wrap on smaller screens */
+        gap: 16px;
+    }
+}
