@@ -762,3 +762,263 @@ body {
         top: 0;
     }
 }
+
+/* =========================================
+   MOBILE OVERRIDES (max-width: 900px)
+   ========================================= */
+
+/* Decision Barriers: convert horizontal accordion to vertical stack */
+@media (max-width: 900px) {
+    .vision-barriers {
+        padding: 80px 5vw;
+    }
+
+    .barriers-title {
+        font-size: 36px;
+        letter-spacing: -1px;
+    }
+
+    .barriers-subtitle {
+        font-size: 16px;
+    }
+
+    .barriers-accordion {
+        flex-direction: column;
+        height: auto;
+        border: none;
+        background-color: transparent;
+        gap: 0;
+    }
+
+    .barrier-item {
+        width: 100% !important;
+        height: auto !important;
+        flex: none !important;
+        border-right: none;
+        border-bottom: 1px solid #EAEAEA;
+        padding: 32px 0;
+        overflow: visible;
+    }
+
+    .barrier-item:last-child {
+        border-bottom: none;
+    }
+
+    /* Always show all content — disable the hover-only reveal */
+    .barrier-content {
+        width: 100%;
+    }
+
+    .barrier-num {
+        font-size: 48px !important;
+        margin-bottom: 16px !important;
+        letter-spacing: -2px !important;
+        margin-top: 0 !important;
+        line-height: 1 !important;
+    }
+
+    .barrier-item-title {
+        font-size: 22px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .barrier-desc {
+        display: block;
+        color: #666666;
+    }
+
+    /* Remove hover effects that rely on desktop expansion */
+    .barrier-item:hover,
+    .barrier-item.is-active {
+        flex: none;
+        height: auto;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #EAEAEA;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .barrier-item:last-child:hover,
+    .barrier-item:last-child.is-active {
+        border-bottom: none;
+    }
+
+    /* FAQ section: mobile padding adjustments */
+    .faqs-left-col {
+        padding: 60px 5vw;
+    }
+
+    .faqs-main-title {
+        font-size: 36px;
+    }
+
+    .faqs-right-col {
+        padding: 0 5vw 60px;
+    }
+
+    /* Vision statement: stack layout */
+    .vision-content-row {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .vision-statement-title {
+        font-size: 40px !important;
+        letter-spacing: -1px;
+    }
+}
+
+/* =========================================
+   MOBILE OVERRIDES — Our Values & FAQs
+   (max-width: 900px, desktop untouched)
+   ========================================= */
+
+/* ---- Shared base: faq-answer is always hidden on desktop ---- */
+.faq-answer {
+    display: none;
+}
+
+@media (max-width: 900px) {
+
+    /* ============= OUR VALUES ============= */
+    /* Hide the image column — keeps section to 1 screen */
+    .values-right-col {
+        display: none;
+    }
+
+    .our-values {
+        padding: 60px 5vw;
+    }
+
+    .values-main-title {
+        font-size: 40px;
+        margin-bottom: 24px;
+    }
+
+    .values-content-split {
+        gap: 0;
+        margin-bottom: 32px;
+    }
+
+    .values-left-col {
+        min-height: auto;
+        width: 100%;
+    }
+
+    /* Move controls to be a prev/next row below the text */
+    .values-controls {
+        order: 2;
+        margin-top: 24px;
+        margin-bottom: 0;
+    }
+
+    .values-text-content {
+        margin-top: 24px;
+        margin-bottom: 0;
+        order: 1;
+    }
+
+    .val-title {
+        font-size: 32px;
+        margin-bottom: 12px;
+    }
+
+    .val-desc {
+        font-size: 16px;
+    }
+
+    /* Bottom nav: wrapping rows so items like 04/05 don't get clipped */
+    .values-bottom-nav {
+        gap: 10px 16px;
+        flex-wrap: wrap;
+        overflow-x: visible;
+        padding-top: 32px;
+        padding-bottom: 4px;
+    }
+
+    .values-bottom-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    .val-nav-label {
+        font-size: 13px;
+    }
+
+    .val-nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+
+    /* ============= FAQs ============= */
+    /* Hide entire right column (image + placeholder text + spinning gear) */
+    .faqs-right-col {
+        display: none !important;
+    }
+
+    /* FAQ section becomes natural height, no sticky scroll */
+    .vision-faqs {
+        height: auto !important;
+        padding: 0;
+    }
+
+    .faqs-sticky-wrapper {
+        position: relative !important;
+        top: auto !important;
+        height: auto !important;
+    }
+
+    .faqs-split-layout {
+        flex-direction: column;
+    }
+
+    .faqs-left-col {
+        width: 100%;
+        height: auto;
+        padding: 60px 5vw;
+    }
+
+    .faqs-main-title {
+        font-size: 36px;
+    }
+
+    .faqs-subtitle {
+        margin-bottom: 32px;
+    }
+
+    /* FAQ rows: full width, always full opacity, clickable */
+    .faq-row {
+        flex-wrap: wrap;
+        opacity: 1 !important;
+        cursor: pointer;
+        padding: 24px 0;
+    }
+
+    .faq-row:hover {
+        opacity: 1 !important;
+    }
+
+    .faq-question {
+        font-size: 18px;
+        flex: 1;
+        padding-right: 12px;
+    }
+
+    /* Answer: hidden by default, shown when .is-open is added by JS */
+    .faq-answer {
+        display: none;
+        width: 100%;
+        font-family: 'Manrope', sans-serif;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #555555;
+        padding-top: 16px;
+        margin-top: 4px;
+    }
+
+    .faq-row.is-open .faq-answer {
+        display: block;
+    }
+}

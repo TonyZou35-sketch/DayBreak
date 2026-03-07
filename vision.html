@@ -16,6 +16,13 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" aria-label="Open mobile menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
         <div class="navbar-left">
             <a href="product.html" class="nav-link">Product</a>
             <!-- Dropdown Wrapper for About Us -->
@@ -260,24 +267,36 @@
 
                     <div class="faqs-list">
                         <!-- FAQ 1 -->
-                        <div class="faq-row is-active" id="faq-row-0">
+                        <div class="faq-row is-active is-open" id="faq-row-0">
                             <span class="faq-question">How does Daybreak integrate with existing systems?</span>
                             <span class="faq-icon">-</span>
+                            <div class="faq-answer">Daybreak connects via API to your existing ERP, WMS, and planning
+                                tools. Our integration layer is designed for enterprise environments, typically going
+                                live within 6–8 weeks without disrupting current workflows.</div>
                         </div>
                         <!-- FAQ 2 -->
                         <div class="faq-row" id="faq-row-1">
                             <span class="faq-question">How long until teams see impact?</span>
                             <span class="faq-icon">+</span>
+                            <div class="faq-answer">Most teams begin seeing measurable reductions in manual planning
+                                work within the first 30 days. Forecast accuracy improvements and labor savings
+                                typically become visible at full deployment, around week 8–12.</div>
                         </div>
                         <!-- FAQ 3 -->
                         <div class="faq-row" id="faq-row-2">
                             <span class="faq-question">How is AI explainability handled?</span>
                             <span class="faq-icon">+</span>
+                            <div class="faq-answer">Every decision Dawn makes includes a rationale — the factors
+                                weighed, thresholds applied, and confidence level. Planners can inspect any
+                                recommendation and understand exactly why it was made before acting on it.</div>
                         </div>
                         <!-- FAQ 4 -->
                         <div class="faq-row" id="faq-row-3">
                             <span class="faq-question">Who uses Daybreak day to day?</span>
                             <span class="faq-icon">+</span>
+                            <div class="faq-answer">Supply chain planners, demand managers, and operations leads are
+                                Dawn's primary users. Leadership and finance teams leverage the dashboards for
+                                visibility into decision quality and labor reallocation.</div>
                         </div>
                     </div>
                 </div>
@@ -304,6 +323,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- =========================================
          SECTION 9: Footer (Global)
@@ -724,6 +744,66 @@
             // =========================================
         });
     </script>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay">
+        <div class="mobile-nav-header">
+            <span class="logo-text"
+                style="color: #257A3F; font-size: 20px; font-weight: 500; letter-spacing: -0.3px;">daybreak</span>
+            <button class="mobile-nav-close">&times;</button>
+        </div>
+        <div class="mobile-nav-body">
+            <a href="product.html" class="mobile-nav-link">Product</a>
+            <div class="mobile-nav-group">
+                <button class="mobile-nav-toggle">About Us <span class="toggle-icon">+</span></button>
+                <div class="mobile-nav-dropdown">
+                    <a href="vision.html" class="mobile-nav-sublink">Vision & Mission</a>
+                    <a href="about.html" class="mobile-nav-sublink">Our Team</a>
+                </div>
+            </div>
+            <div class="mobile-nav-group">
+                <button class="mobile-nav-toggle">Resource <span class="toggle-icon">+</span></button>
+                <div class="mobile-nav-dropdown">
+                    <a href="resource.html" class="mobile-nav-sublink">Blog</a>
+                    <a href="ai-labor-model.html" class="mobile-nav-sublink">AI Labor Model</a>
+                </div>
+            </div>
+            <a href="careers.html" class="mobile-nav-link">Careers</a>
+
+        </div>
+    </div>
+    <script>
+        // Mobile-only FAQ accordion (activates at ≤900px to not interfere with desktop scroll-spy)
+        (function () {
+            function initMobileFaq() {
+                if (window.innerWidth > 900) return;
+                const rows = document.querySelectorAll('.faq-row');
+                rows.forEach(function (row) {
+                    // Remove any existing listener by cloning
+                    var newRow = row.cloneNode(true);
+                    row.parentNode.replaceChild(newRow, row);
+                    newRow.addEventListener('click', function () {
+                        const isOpen = newRow.classList.contains('is-open');
+                        // Close all others
+                        document.querySelectorAll('.faq-row.is-open').forEach(function (r) {
+                            r.classList.remove('is-open');
+                            const icon = r.querySelector('.faq-icon');
+                            if (icon) icon.textContent = '+';
+                        });
+                        // Toggle this one
+                        if (!isOpen) {
+                            newRow.classList.add('is-open');
+                            const icon = newRow.querySelector('.faq-icon');
+                            if (icon) icon.textContent = '−';
+                        }
+                    });
+                });
+            }
+            document.addEventListener('DOMContentLoaded', initMobileFaq);
+        })();
+    </script>
+    <script src="mobile-nav.js"></script>
+
 </body>
 
 </html>

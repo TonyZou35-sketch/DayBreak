@@ -1082,7 +1082,6 @@ body {
   width: 100%;
   height: 100vh;
   display: flex;
-  overflow: hidden;
 }
 
 /* LEFT COLUMN: Context & Accordion Tabs */
@@ -1244,16 +1243,65 @@ body {
   will-change: transform;
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments — Mobile only, desktop untouched */
+/* Desktop default: hide mobile-only elements */
+.dp-mobile-only {
+  display: none;
+}
+
+/* Mobile: swap desktop sticky for dedicated mobile layout */
 @media (max-width: 900px) {
-  .dp-sticky {
-    flex-direction: column;
+  .dp-section {
+    height: auto;
   }
 
-  .dp-left,
-  .dp-right {
-    max-width: 100%;
+  .dp-sticky {
+    display: none;
+  }
+
+  .dp-mobile-only {
+    display: block;
+    padding: 60px 5%;
+  }
+
+  .dp-mobile-header {
+    margin-bottom: 48px;
+  }
+
+  .dp-mobile-items {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .dp-mobile-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .dp-mobile-img {
     width: 100%;
+    border-radius: 12px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .dp-mobile-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #222222;
+    margin: 0;
+    letter-spacing: -0.5px;
+  }
+
+  .dp-mobile-desc {
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(34, 34, 34, 0.7);
+    margin: 0;
   }
 }
 
@@ -1624,17 +1672,75 @@ body {
   margin: 0;
 }
 
-/* Responsive Overrides */
+/* Desktop default: hide mobile-only element */
+.roi-mobile-only {
+  display: none;
+}
+
+/* Mobile: swap desktop sticky for dedicated mobile layout */
 @media (max-width: 900px) {
-  .roi-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto auto;
-    overflow-y: auto;
+  .roi-section {
+    height: auto;
+    margin-top: 60px;
+    padding: 60px 5%;
   }
 
-  .roi-line-horizontal,
-  .roi-line-vertical {
+  .roi-sticky {
     display: none;
+  }
+
+  .roi-mobile-only {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .roi-mobile-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .roi-mobile-card {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  .roi-mobile-step {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(34, 34, 34, 0.5);
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .roi-mobile-stat {
+    font-family: 'Manrope', sans-serif;
+    font-size: 72px;
+    font-weight: 400;
+    color: #222222;
+    letter-spacing: -3px;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .roi-mobile-text h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #222222;
+    margin: 0 0 8px 0;
+  }
+
+  .roi-mobile-text p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(34, 34, 34, 0.7);
+    margin: 0;
   }
 }
 
@@ -2404,116 +2510,140 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+/* Mobile Navigation Hamburger */
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+}
 
-  /* =========================================================
-       1. Hero Animation Kill-Switch
-       ========================================================= */
-  .hero-section *,
-  .background-wrapper,
-  .hero-text-svg,
-  .daybreak-text-svg,
-  .logo-large-svg,
-  .bg-gradient-svg {
-    animation: none !important;
-    transition: none !important;
-    clip-path: none !important;
-    opacity: 1 !important;
-    transform: translate(0, 0) scale(1) !important;
-    filter: none !important;
-  }
+.hamburger-line {
+  width: 20px;
+  height: 2px;
+  background-color: var(--color-dark, #222);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
 
-  /* =========================================================
-       2. Stack Everything (2-Column Flexbox Layouts)
-       ========================================================= */
-  .footer-top,
-  .footer-bottom,
-  .two-col-grid,
-  .split-layout,
-  .articles-grid,
-  .cards-row,
-  .video-cards-wrapper,
-  div[style*="display: flex"] {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-  }
+/* Mobile Navigation Overlay */
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #FAFAFA;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+}
 
-  /* Ensure images/videos appear above text when stacked */
-  .card-image-col,
-  .media-container,
-  .image-wrapper {
-    order: -1 !important;
-    width: 100% !important;
-  }
+.mobile-nav-overlay.is-active {
+  transform: translateX(0);
+}
 
-  /* =========================================================
-       3. Asset Sizing
-       ========================================================= */
-  img,
-  video,
-  svg {
-    max-width: 100% !important;
-    height: auto !important;
-  }
+.mobile-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
 
-  /* =========================================================
-       4. Typography & Spacing
-       ========================================================= */
-  h1 {
-    font-size: 40px !important;
-    line-height: 1.1 !important;
-  }
+.mobile-nav-close {
+  background: transparent;
+  border: none;
+  font-size: 32px;
+  color: #222;
+  cursor: pointer;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
 
-  h2 {
-    font-size: 32px !important;
-    line-height: 1.2 !important;
-  }
+.mobile-nav-body {
+  padding: 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
 
-  h3 {
-    font-size: 24px !important;
-  }
+.mobile-nav-link {
+  font-family: 'Manrope', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: #2D3136;
+  text-decoration: none;
+  padding: 16px 0;
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
 
-  p {
-    font-size: 16px !important;
-  }
+.mobile-nav-group {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
 
-  section,
-  .section-padding,
-  .padding-large {
-    padding-top: 40px !important;
-    padding-bottom: 40px !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-    gap: 32px !important;
-  }
+.mobile-nav-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Manrope', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: #2D3136;
+  background: transparent;
+  border: none;
+  padding: 16px 0;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
 
-  /* Override any specific massive margins/gaps */
-  * {
-    column-gap: 20px !important;
-    row-gap: 20px !important;
-  }
+.toggle-icon {
+  font-size: 28px;
+  font-weight: 400;
+  color: #39B15B;
+}
 
-  /* =========================================================
-       5. Navbar Simplification
-       ========================================================= */
-  /* Hide the center text links container */
-  .navbar-center,
-  .nav-links,
-  .navbar-left {
-    /* Fallback for Daybreak's actual left-nav structure */
-    display: none !important;
-  }
+.mobile-nav-dropdown {
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 20px;
+  margin-bottom: 16px;
+  border-left: 2px solid #39B15B;
+}
 
-  /* Ensure Navbar handles the remaining Logo and CTA properly */
-  .navbar {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    padding: 0 20px !important;
-  }
+.mobile-nav-dropdown.is-open {
+  display: flex;
+}
 
-  .navbar-right {
-    display: flex !important;
+.mobile-nav-sublink {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  color: #666;
+  text-decoration: none;
+  padding: 12px 0;
+}
+
+@media (max-width: 900px) {
+  .mobile-menu-btn {
+    display: flex;
   }
 }

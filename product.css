@@ -215,29 +215,87 @@
 
 @media (max-width: 768px) {
     .dawn-delivers {
-        padding-top: 140px;
+        padding-top: 120px;
+        padding-bottom: 60px;
+        /* Allow horizontal scroll track to be visible */
+        overflow: visible;
+        overflow-y: clip;
     }
 
     .dd-title {
-        font-size: 48px;
+        font-size: 40px;
+        letter-spacing: -1px;
     }
 
-    .dd-card {
-        min-width: calc(50% - 20px);
-        /* Stack 2x2 with odd one out on mobile */
-        aspect-ratio: 1;
-        /* Squarer on mobile */
+    .dd-subtitle {
+        font-size: 15px;
+        margin-bottom: 48px;
+    }
+
+    /* Turn the flex container into a snap-scroll track */
+    .dd-cards-container {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: stretch;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        /* Left padding = first card starts with breathing room;
+           10vw right padding creates visible "peek" of next card */
+        padding: 0 10vw 20px 5vw;
+        gap: 16px;
+        max-width: 100%;
+        width: calc(100% + 5vw);
+        margin-left: -0px;
+        margin-bottom: 8px;
+    }
+
+    .dd-cards-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* All cards: uniform size, scroll-snap */
+    .dd-card,
+    .dd-card:nth-child(1),
+    .dd-card:nth-child(2),
+    .dd-card:nth-child(3),
+    .dd-card:nth-child(4),
+    .dd-card:nth-child(5) {
+        flex: 0 0 68vw;
+        min-width: 68vw;
+        max-width: 68vw;
+        aspect-ratio: 3 / 4;
+        scroll-snap-align: start;
+        /* Keep the floating animation */
+        animation: float-up-down 6s ease-in-out infinite;
+    }
+
+    /* Scroll hint: small dot indicators */
+    .dd-cards-container::after {
+        content: '';
+        flex: 0 0 1px;
+        /* triggers the trailing gap to be respected */
+        visibility: hidden;
     }
 }
 
+/* No additional 480px override needed — carousel handles all small screens */
 @media (max-width: 480px) {
-    .dd-card {
-        min-width: 100%;
-        /* Fully stacked on tiny screens */
-        aspect-ratio: auto;
-        padding-top: 60px;
+
+    .dd-card,
+    .dd-card:nth-child(1),
+    .dd-card:nth-child(2),
+    .dd-card:nth-child(3),
+    .dd-card:nth-child(4),
+    .dd-card:nth-child(5) {
+        flex: 0 0 78vw;
+        min-width: 78vw;
+        max-width: 78vw;
     }
 }
+
 
 /* =========================================
    Section 2: How Dawn Works (Scroll-Spy)
@@ -621,5 +679,143 @@
         flex-wrap: wrap;
         /* Allow nav items to wrap on smaller screens */
         gap: 16px;
+    }
+}
+
+/* =========================================
+   MOBILE OVERRIDES (max-width: 900px)
+   ========================================= */
+@media (max-width: 900px) {
+
+    /* Section 2: How Dawn Works — release 500vh scroll-spy to natural flow */
+    .hdw-section {
+        background-attachment: scroll;
+    }
+
+    .hdw-container {
+        height: auto;
+    }
+
+    .hdw-sticky {
+        position: relative;
+        top: auto;
+        height: auto;
+        grid-template-columns: 1fr;
+        padding: 40px 5vw 60px;
+        gap: 32px;
+    }
+
+    .hdw-menu {
+        max-width: 100%;
+        margin-left: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hdw-menu-item {
+        font-size: 18px;
+        padding: 20px 0;
+        color: #222222;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        opacity: 1 !important;
+        /* Reset opacity on mobile, we'll use color or bolding instead if needed, or stick to user preference */
+        text-align: left;
+        width: 100%;
+    }
+
+    .hdw-menu-item.is-active {
+        font-weight: 600;
+    }
+
+    .hdw-menu-item:not(.is-active) {
+        color: #999;
+    }
+
+    /* Hide the original right media column on mobile */
+    .hdw-media {
+        display: none !important;
+    }
+
+    /* Style for the inline media that will be injected via JS */
+    .hdw-media-item-mobile {
+        display: none;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        aspect-ratio: 16 / 9;
+        background: #f7f7f7;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .hdw-menu-item.is-active+.hdw-media-item-mobile {
+        display: block;
+    }
+
+    /* Section 3: What Dawn Does — release 500vh scroll-spy */
+    .wdd-container {
+        height: auto;
+        padding-bottom: 40px;
+    }
+
+    .wdd-sticky {
+        position: relative;
+        top: auto;
+        height: auto;
+        padding: 40px 5vw 60px;
+        overflow: visible;
+    }
+
+    .wdd-content-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        margin-bottom: 32px;
+    }
+
+    .wdd-text-stack {
+        min-height: auto;
+        position: relative;
+        height: auto;
+    }
+
+    /* Show only active text item */
+    .wdd-text-item {
+        position: static;
+        transform: none;
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        overflow: hidden;
+    }
+
+    .wdd-text-item.is-active {
+        opacity: 1;
+        visibility: visible;
+        height: auto;
+    }
+
+    .wdd-text-item h3 {
+        font-size: 36px !important;
+        letter-spacing: -1px;
+    }
+
+    .wdd-image-stack {
+        aspect-ratio: 16 / 9;
+    }
+
+    .wdd-image-item {
+        position: absolute;
+    }
+
+    .wdd-top-title {
+        font-size: 32px;
+        letter-spacing: -0.5px;
+    }
+
+    /* Product hero title scaling */
+    .dd-title {
+        font-size: 40px;
+        letter-spacing: -1px;
     }
 }

@@ -14,6 +14,13 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-animated">
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" aria-label="Open mobile menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
         <div class="navbar-left">
             <a href="product.html" class="nav-link">Product</a>
             <!-- Dropdown Wrapper for About Us -->
@@ -109,7 +116,8 @@
     <section class="pm-v2-container">
         <!-- Left Text Column -->
         <div class="pm-v2-left">
-            <img src="Assets/Section1_YourPlanningModel/topleftlogo.svg" alt="Top Left Decor Logo" class="pm-v2-logo">
+            <img src="Assets/Section1_YourPlanningModel/topleftlogo_new.svg" alt="Top Left Decor Logo"
+                class="pm-v2-logo">
 
             <h1 class="pm-v2-h1">
                 Your planning model <br />
@@ -205,7 +213,7 @@
 
             <!-- Bottom Floating CTA -->
             <!-- Bottom Floating CTA -->
-            <a href="#" class="btn-dark" style="margin-top: 60px;">
+            <a href="product.html" class="btn-dark" style="margin-top: 60px;">
                 Evaluate AI Labor
                 <span class="btn-arrow-icon">
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -226,8 +234,8 @@
             <!-- Left Column: Context and Accordion -->
             <div class="dp-left">
                 <div class="dp-context">
-                    <img src="./Assets/Section1_YourPlanningModel/topleftlogo.svg" alt="Infinity Icon"
-                        class="pm-v2-logo" style="margin-bottom: 16px; width: 32px;" />
+                    <img src="Assets/Section_DawnPlanners/TopLeftLogo.svg" alt="Infinity Icon" class="pm-v2-logo"
+                        style="margin-bottom: 16px; width: 32px;" />
                     <h2 class="dp-h2">Dawn & Planners</h2>
                     <p class="dp-sub">
                         Baseline decisions owned. Exceptions supervised.<br />
@@ -290,6 +298,45 @@
                             d="M4.93192 7.02594C5.62807 5.72095 7.01644 4.83105 8.6156 4.83105C10.9129 4.83105 12.7752 6.66749 12.7752 8.93285C12.7752 11.1982 10.9129 13.0347 8.6156 13.0347C7.05063 13.0347 5.68769 12.1823 4.97767 10.9228L4.98066 10.9281L1.35492 14.5033L3.00328 16.1287L5.97652 13.1968L4.67729 17.1403L6.89412 17.8505L8.19271 13.9096L8.8497 18L11.1521 17.6403L10.4951 13.5514L12.9646 16.9029L14.8503 15.5517L12.3794 12.1983L16.1241 14.0797L17.1823 12.0316L13.439 10.1508H17.6396V7.85216H13.4364L17.1823 5.97013L16.1241 3.92197L12.3824 5.80189L14.8511 2.45126L12.9652 1.10029L10.4931 4.45557L11.1512 0.359667L8.84885 5.51343e-07L8.19121 4.09485L6.89177 0.151161L4.67494 0.861429L5.97331 4.80195L3.00349 1.87318L1.35514 3.49842L4.93192 7.02594ZM1.97065 7.85006H-0.360352V10.1487H1.97065V7.85006Z"
                             fill="#D4D4D4" />
                     </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile-only layout: shown on mobile, hidden on desktop -->
+        <div class="dp-mobile-only">
+            <div class="dp-mobile-header">
+                <img src="Assets/Section_DawnPlanners/TopLeftLogo.svg" alt="Infinity Icon"
+                    style="width: 32px; margin-bottom: 16px; display: block;" />
+                <h2 class="dp-h2">Dawn &amp; Planners</h2>
+                <p class="dp-sub">
+                    Baseline decisions owned. Exceptions supervised.<br />
+                    History Labeled. Outcomes measured.
+                </p>
+            </div>
+            <div class="dp-mobile-items">
+                <div class="dp-mobile-item">
+                    <img src="./Assets/Section_DawnPlanners/Img1.webp" alt="Dawn Simplifies" class="dp-mobile-img" />
+                    <h3 class="dp-mobile-title">Dawn Simplifies</h3>
+                    <p class="dp-mobile-desc">Dawn executes baseline decisions across thousands of SKUs each cycle,
+                        handling the majority of routine work.</p>
+                </div>
+                <div class="dp-mobile-item">
+                    <img src="./Assets/Section_DawnPlanners/Img2.webp" alt="Dawn Notices" class="dp-mobile-img" />
+                    <h3 class="dp-mobile-title">Dawn Notices</h3>
+                    <p class="dp-mobile-desc">When thresholds are crossed or risk increases, items get surfaced for
+                        review.</p>
+                </div>
+                <div class="dp-mobile-item">
+                    <img src="./Assets/Section_DawnPlanners/Img3.webp" alt="You Decide" class="dp-mobile-img" />
+                    <h3 class="dp-mobile-title">You Decide</h3>
+                    <p class="dp-mobile-desc">Planners focus only on the critical exceptions, applying human judgment
+                        where it matters most.</p>
+                </div>
+                <div class="dp-mobile-item">
+                    <img src="./Assets/Section_DawnPlanners/Img4.webp" alt="We Grow" class="dp-mobile-img" />
+                    <h3 class="dp-mobile-title">We Grow</h3>
+                    <p class="dp-mobile-desc">When actuals arrive, decisions are measured against results. Override
+                        effectiveness becomes visible.</p>
                 </div>
             </div>
         </div>
@@ -418,6 +465,42 @@
 
             </div>
         </div>
+
+        <!-- Mobile-only layout: shown on mobile, hidden on desktop -->
+        <div class="roi-mobile-only">
+            <h2 class="roi-h2">ROI &amp; Measurable Impact</h2>
+            <p class="roi-sub">Daybreak isn't just another tool—it's a value generator. By combining predictive
+                intelligence with automated decisioning, we deliver transformative financial results and operational
+                efficiency for the industry.</p>
+            <div class="roi-mobile-cards">
+                <div class="roi-mobile-card">
+                    <div class="roi-mobile-step">01</div>
+                    <div class="roi-mobile-stat">$12B+</div>
+                    <div class="roi-mobile-text">
+                        <h3>Value Optimized</h3>
+                        <p>Delivering measurable financial impact across global supply chains through intelligent
+                            decision making.</p>
+                    </div>
+                </div>
+                <div class="roi-mobile-card">
+                    <div class="roi-mobile-step">02</div>
+                    <div class="roi-mobile-stat">98%</div>
+                    <div class="roi-mobile-text">
+                        <h3>Prediction Accuracy</h3>
+                        <p>Outperforming traditional forecasting methods with Daybreak's advanced AI prediction
+                            platform.</p>
+                    </div>
+                </div>
+                <div class="roi-mobile-card">
+                    <div class="roi-mobile-step">03</div>
+                    <div class="roi-mobile-stat">100x</div>
+                    <div class="roi-mobile-text">
+                        <h3>Decision Speed</h3>
+                        <p>Transforming planning cycles from weeks to minutes with automated insights.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- =========================================
@@ -512,7 +595,7 @@
                     <h2 class="ailabor-h2">AI is not a tool upgrade. It's a new category of labor.</h2>
                     <p class="ailabor-p">Daybreak introduces purpose-built AI agents that don't assist planners — they
                         perform the work. Scoped, governed, and accountable.</p>
-                    <a href="#" class="btn-dark">
+                    <a href="ai-labor-model.html" class="btn-dark">
                         Read more
                         <span class="btn-arrow-icon">
                             <!-- SVG Arrow Icon extracted from Section 2 -->
@@ -1058,6 +1141,35 @@
 
         });
     </script>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay">
+        <div class="mobile-nav-header">
+            <span class="logo-text"
+                style="color: #257A3F; font-size: 20px; font-weight: 500; letter-spacing: -0.3px;">daybreak</span>
+            <button class="mobile-nav-close">&times;</button>
+        </div>
+        <div class="mobile-nav-body">
+            <a href="product.html" class="mobile-nav-link">Product</a>
+            <div class="mobile-nav-group">
+                <button class="mobile-nav-toggle">About Us <span class="toggle-icon">+</span></button>
+                <div class="mobile-nav-dropdown">
+                    <a href="vision.html" class="mobile-nav-sublink">Vision & Mission</a>
+                    <a href="about.html" class="mobile-nav-sublink">Our Team</a>
+                </div>
+            </div>
+            <div class="mobile-nav-group">
+                <button class="mobile-nav-toggle">Resource <span class="toggle-icon">+</span></button>
+                <div class="mobile-nav-dropdown">
+                    <a href="resource.html" class="mobile-nav-sublink">Blog</a>
+                    <a href="ai-labor-model.html" class="mobile-nav-sublink">AI Labor Model</a>
+                </div>
+            </div>
+            <a href="careers.html" class="mobile-nav-link">Careers</a>
+
+        </div>
+    </div>
+    <script src="mobile-nav.js"></script>
 </body>
 
 </html>

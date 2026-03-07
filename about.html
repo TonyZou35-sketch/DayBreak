@@ -17,6 +17,13 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" aria-label="Open mobile menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
         <div class="navbar-left">
             <a href="product.html" class="nav-link">Product</a>
             <!-- Dropdown Wrapper for About Us -->
@@ -531,6 +538,34 @@
             }
         });
     </script>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay">
+        <div class="mobile-nav-header">
+            <span class="logo-text" style="color: #257A3F; font-size: 20px; font-weight: 500; letter-spacing: -0.3px;">daybreak</span>
+            <button class="mobile-nav-close">&times;</button>
+        </div>
+        <div class="mobile-nav-body">
+            <a href="product.html" class="mobile-nav-link">Product</a>
+            <div class="mobile-nav-group">
+                <button class="mobile-nav-toggle">About Us <span class="toggle-icon">+</span></button>
+                <div class="mobile-nav-dropdown">
+                    <a href="vision.html" class="mobile-nav-sublink">Vision & Mission</a>
+                    <a href="about.html" class="mobile-nav-sublink">Our Team</a>
+                </div>
+            </div>
+            <div class="mobile-nav-group">
+                <button class="mobile-nav-toggle">Resource <span class="toggle-icon">+</span></button>
+                <div class="mobile-nav-dropdown">
+                    <a href="resource.html" class="mobile-nav-sublink">Blog</a>
+                    <a href="ai-labor-model.html" class="mobile-nav-sublink">AI Labor Model</a>
+                </div>
+            </div>
+            <a href="careers.html" class="mobile-nav-link">Careers</a>
+            
+        </div>
+    </div>
+    <script src="mobile-nav.js"></script>
 </body>
 
 </html>

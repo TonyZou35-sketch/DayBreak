@@ -16,6 +16,13 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" aria-label="Open mobile menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
         <div class="navbar-left">
             <a href="product.html" class="nav-link">Product</a>
             <!-- Dropdown Wrapper for About Us -->
@@ -303,11 +310,12 @@
                             <img src="Assets/ResourcePage/img3.webp" alt="Supply chain planner using mobile device"
                                 class="alm-pillar-img">
                         </div>
-                        <div class="alm-pillar-img-wrapper placeholder-img" data-index="1">
-                            <span>Placeholder</span>
+                        <div class="alm-pillar-img-wrapper" data-index="1">
+                            <img src="Assets/ResourcePage/img3.webp" alt="Governed Autonomy" class="alm-pillar-img">
                         </div>
-                        <div class="alm-pillar-img-wrapper placeholder-img" data-index="2">
-                            <span>Placeholder</span>
+                        <div class="alm-pillar-img-wrapper" data-index="2">
+                            <img src="Assets/ResourcePage/img3.webp" alt="Compounding Performance"
+                                class="alm-pillar-img">
                         </div>
                     </div>
 
@@ -318,10 +326,14 @@
                                 constraints, trade-offs, and planning heuristics natively.</p>
                         </div>
                         <div class="alm-pillar-text" data-index="1">
-                            <p>Placeholderplaceholderplaceholderplaceholderplaceholder</p>
+                            <p>Every autonomous decision happens within a defined boundary. Planners set thresholds,
+                                review exceptions, and maintain full audit trails — so speed never comes at the cost of
+                                control.</p>
                         </div>
                         <div class="alm-pillar-text" data-index="2">
-                            <p>Placeholderplaceholderplaceholderplaceholderplaceholder</p>
+                            <p>Each decision cycle generates labeled history. Dawn learns from outcomes, refines its
+                                judgment over time, and continuously improves forecast accuracy without manual
+                                retraining.</p>
                         </div>
                     </div>
 
@@ -571,6 +583,35 @@
             }
         });
     </script>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay">
+        <div class="mobile-nav-header">
+            <span class="logo-text"
+                style="color: #257A3F; font-size: 20px; font-weight: 500; letter-spacing: -0.3px;">daybreak</span>
+            <button class="mobile-nav-close">&times;</button>
+        </div>
+        <div class="mobile-nav-body">
+            <a href="product.html" class="mobile-nav-link">Product</a>
+            <div class="mobile-nav-group">
+                <button class="mobile-nav-toggle">About Us <span class="toggle-icon">+</span></button>
+                <div class="mobile-nav-dropdown">
+                    <a href="vision.html" class="mobile-nav-sublink">Vision & Mission</a>
+                    <a href="about.html" class="mobile-nav-sublink">Our Team</a>
+                </div>
+            </div>
+            <div class="mobile-nav-group">
+                <button class="mobile-nav-toggle">Resource <span class="toggle-icon">+</span></button>
+                <div class="mobile-nav-dropdown">
+                    <a href="resource.html" class="mobile-nav-sublink">Blog</a>
+                    <a href="ai-labor-model.html" class="mobile-nav-sublink">AI Labor Model</a>
+                </div>
+            </div>
+            <a href="careers.html" class="mobile-nav-link">Careers</a>
+
+        </div>
+    </div>
+    <script src="mobile-nav.js"></script>
 </body>
 
 </html>
