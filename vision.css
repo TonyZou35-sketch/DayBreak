@@ -732,7 +732,6 @@ body {
     right: 40px;
     width: 104.5px;
     height: 104.5px;
-    opacity: 0.3;
     /* JS will handle transform: rotate() directly */
 }
 
