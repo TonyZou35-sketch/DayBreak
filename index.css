@@ -1407,6 +1407,13 @@ body {
   z-index: 1;
 }
 
+/* Mobile Static Fallback */
+.sv-mobile-fallback {
+  display: none;
+  width: 95%;
+  height: auto;
+}
+
 /* Bottom Text Area */
 .perf-card-text {
   padding: 0 40px 40px 40px;
@@ -1447,6 +1454,15 @@ body {
 @media (max-width: 900px) {
   .perf-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Disable videos on mobile, use static comp instead */
+  .seamless-video video {
+    display: none !important;
+  }
+
+  .sv-mobile-fallback {
+    display: block;
   }
 }
 
