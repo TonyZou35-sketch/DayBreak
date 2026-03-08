@@ -389,6 +389,11 @@ body {
     .article-img-wrapper {
         margin-top: 20px;
     }
+
+    /* Hide filter bar on mobile — not needed for small screens */
+    .filter-bar {
+        display: none;
+    }
 }
 
 /* =========================================
@@ -520,8 +525,32 @@ body {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+
+    /* Center the subscribe section on mobile */
+    .sub-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 32px;
+    }
+
+    .sub-text-col {
+        align-items: center;
+    }
+
+    .sub-title {
+        font-size: 32px;
+        letter-spacing: -0.5px;
+    }
+
+    .sub-form-col {
+        width: 100%;
+        justify-content: center;
+    }
+
     .sub-form {
+        width: 100%;
         flex-direction: column;
         gap: 16px;
         align-items: stretch;

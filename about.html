@@ -154,7 +154,8 @@
                         </div>
                     </div>
                     <div class="leader-card">
-                        <img src="Assets/AboutPage/img6.webp" alt="Trevor Miles" class="leader-img">
+                        <img src="Assets/AboutPage/img6.webp" alt="Trevor Miles" class="leader-img"
+                            style="object-fit: contain; object-position: top center; background-color: #FFFFFF;">
                         <div class="leader-info">
                             <h3 class="leader-name">Trevor Miles</h3>
                             <span class="leader-role">CHIEF STRATEGY OFFICER</span>
@@ -526,6 +527,17 @@
                     });
                 }
 
+                // Click on year bubble to activate that milestone (desktop + mobile)
+                tNodes.forEach((node, idx) => {
+                    const yearEl = node.querySelector('.node-year');
+                    if (yearEl) {
+                        yearEl.addEventListener('click', () => {
+                            currentTimelineIndex = idx;
+                            updateTimeline();
+                        });
+                    }
+                });
+
                 prevBtn.addEventListener('click', () => {
                     currentTimelineIndex = (currentTimelineIndex > 0) ? currentTimelineIndex - 1 : tNodes.length - 1;
                     updateTimeline();
@@ -542,7 +554,8 @@
     <!-- Mobile Navigation Overlay -->
     <div class="mobile-nav-overlay">
         <div class="mobile-nav-header">
-            <span class="logo-text" style="color: #257A3F; font-size: 20px; font-weight: 500; letter-spacing: -0.3px;">daybreak</span>
+            <span class="logo-text"
+                style="color: #257A3F; font-size: 20px; font-weight: 500; letter-spacing: -0.3px;">daybreak</span>
             <button class="mobile-nav-close">&times;</button>
         </div>
         <div class="mobile-nav-body">
@@ -562,7 +575,7 @@
                 </div>
             </div>
             <a href="careers.html" class="mobile-nav-link">Careers</a>
-            
+
         </div>
     </div>
     <script src="mobile-nav.js"></script>

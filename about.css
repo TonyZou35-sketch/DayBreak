@@ -205,7 +205,9 @@ body {
 
 .leader-img {
     width: 100%;
-    height: auto;
+    height: 280px;
+    object-fit: cover;
+    object-position: center 20%;
     display: block;
 }
 
@@ -759,18 +761,58 @@ body {
         flex-direction: column;
     }
 
-    .timeline-nodes {
-        flex-wrap: wrap;
-        gap: 60px;
+    /* --- Timeline: vertical layout on mobile --- */
+    .story-timeline-container {
+        position: relative;
     }
 
-    .trusted-grid {
+    /* Vertical line drawn via pseudo-element on the left */
+    .story-timeline-container::before {
+        content: '';
+        position: absolute;
+        left: 20px;
+        /* centers with the 42px node-year (42/2 = 21 ≈ 20px) */
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background-color: #2D3136;
+        z-index: 1;
+    }
+
+    /* Hide the horizontal desktop line */
+    .timeline-line {
+        display: none;
+    }
+
+    .timeline-nodes {
         flex-direction: column;
-        gap: 60px;
+        flex-wrap: nowrap;
+        gap: 40px;
     }
 
     .timeline-node {
-        flex: 1 1 45%;
+        flex: none;
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        padding-right: 0;
+        position: relative;
+        z-index: 2;
+    }
+
+    .node-year-wrapper {
+        flex-shrink: 0;
+        margin-bottom: 0;
+    }
+
+    .node-content {
+        padding-top: 8px;
+        /* optically align with center of the year bubble */
+    }
+
+    /* Hide prev/next arrow controls on mobile */
+    .story-controls {
+        display: none;
     }
 
     .hww-content {
@@ -796,6 +838,49 @@ body {
         font-size: 36px;
     }
 
+    /* --- Trusted Leaders: redesign for mobile --- */
+
+    /* Full-width section padding on mobile */
+    .trusted-leaders-section {
+        padding: 60px 5vw;
+    }
+
+    /* Stack columns vertically with clear separation */
+    .trusted-grid {
+        flex-direction: column;
+        gap: 48px;
+    }
+
+    /* Each column full width */
+    .trusted-column {
+        width: 100%;
+    }
+
+    /* Director names can be a bit smaller on mobile */
+    .director-name {
+        font-size: 20px;
+    }
+
+    .directors-list {
+        gap: 28px;
+    }
+
+    /* Investor logos: 2-column grid, bigger cells, center-aligned */
+    .investors-list {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 32px 24px;
+        align-items: center;
+    }
+
+    .investor-logo {
+        height: auto;
+        min-height: 50px;
+        max-height: 64px;
+        width: 100%;
+        object-fit: contain;
+        object-position: left center;
+    }
+
     .leaders-grid {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -814,10 +899,6 @@ body {
 @media screen and (max-width: 550px) {
     .leaders-grid {
         grid-template-columns: 1fr;
-    }
-
-    .timeline-node {
-        flex: 1 1 100%;
     }
 
     .tech-title {

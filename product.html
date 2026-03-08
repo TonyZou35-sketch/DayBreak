@@ -673,19 +673,22 @@
 
             if (window.innerWidth <= 900) {
 
-                // --- How Dawn Works: tap item → switch to inline accordion ---
+                // --- How Dawn Works: tap item → inline accordion (no scroll jump) ---
                 if (menuItems.length > 0 && mediaItems.length > 0) {
                     menuItems.forEach((btn, idx) => {
                         // 1. Inject media clone inline for mobile accordion
                         const mediaClone = mediaItems[idx].cloneNode(true);
                         mediaClone.classList.add('hdw-media-item-mobile');
-                        mediaClone.classList.remove('hdw-media-item'); // Don't use desktop styles
+                        mediaClone.classList.remove('hdw-media-item');
                         btn.insertAdjacentElement('afterend', mediaClone);
 
-                        // 2. Handle Tap
+                        // 2. Handle Tap — no scroll jump
                         btn.addEventListener('click', (e) => {
                             e.preventDefault();
-                            e.stopPropagation();
+                            e.stopImmediatePropagation();
+
+                            const savedScroll = window.scrollY; // capture before blur triggers reflow
+                            btn.blur(); // release focus so browser doesn't scroll-to-focus
 
                             const alreadyActive = btn.classList.contains('is-active');
 
@@ -702,16 +705,22 @@
                                 const icon = btn.querySelector('.hdw-menu-icon');
                                 if (icon) icon.textContent = '-';
                             }
+
+                            // Restore scroll position (prevents any layout-shift jump)
+                            requestAnimationFrame(() => window.scrollTo({ top: savedScroll, behavior: 'instant' }));
                         });
                     });
                 }
 
-                // --- What Dawn Does: tap nav → switch text + image (no scroll) ---
+                // --- What Dawn Does: tap nav → switch text + image (no scroll jump) ---
                 if (wddNavItems.length > 0 && wddTextItems.length > 0 && wddImageItems.length > 0) {
                     wddNavItems.forEach((btn, idx) => {
                         btn.addEventListener('click', (e) => {
                             e.preventDefault();
-                            e.stopPropagation();
+                            e.stopImmediatePropagation();
+
+                            const savedScroll = window.scrollY;
+                            btn.blur();
 
                             // Update Nav
                             wddNavItems.forEach(n => n.classList.remove('is-active'));
@@ -728,10 +737,13 @@
                                 if (i === idx) img.classList.add('is-active');
                                 else img.classList.remove('is-active');
                             });
+
+                            requestAnimationFrame(() => window.scrollTo({ top: savedScroll, behavior: 'instant' }));
                         });
                     });
                 }
             }
+
 
         });
     </script>

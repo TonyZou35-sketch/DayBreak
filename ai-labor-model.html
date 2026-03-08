@@ -290,14 +290,23 @@
                         <li class="alm-nav-item is-active" data-index="0">
                             <span class="alm-nav-title">Domain-Native Intelligence</span>
                             <span class="alm-nav-icon">-</span>
+                            <span class="alm-nav-inline-desc">Agents trained on supply chain logic — not generic
+                                language tasks. They understand constraints, trade-offs, and planning heuristics
+                                natively.</span>
                         </li>
                         <li class="alm-nav-item" data-index="1">
                             <span class="alm-nav-title">Governed Autonomy</span>
                             <span class="alm-nav-icon">+</span>
+                            <span class="alm-nav-inline-desc">Every autonomous decision happens within a defined
+                                boundary. Planners set thresholds, review exceptions, and maintain full audit trails —
+                                so speed never comes at the cost of control.</span>
                         </li>
                         <li class="alm-nav-item" data-index="2">
                             <span class="alm-nav-title">Compounding Performance</span>
                             <span class="alm-nav-icon">+</span>
+                            <span class="alm-nav-inline-desc">Each decision cycle generates labeled history. Dawn learns
+                                from outcomes, refines its judgment over time, and continuously improves forecast
+                                accuracy without manual retraining.</span>
                         </li>
                     </ul>
                 </div>
@@ -510,7 +519,7 @@
             const textBlocks = document.querySelectorAll('.alm-pillar-text');
             const rotationIcon = document.getElementById('alm-rotation-icon');
 
-            if (pillarSection) {
+            if (pillarSection && window.innerWidth > 900) {
                 const numStates = 3;
                 let currentIndex = 0;
 
@@ -581,6 +590,37 @@
                     });
                 });
             }
+        });
+    </script>
+
+    <!-- Mobile: Three Pillars accordion (≤900px only) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.innerWidth > 900) return;
+            const mobileNavItems = document.querySelectorAll('.alm-nav-item');
+            mobileNavItems.forEach((item) => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    const savedScroll = window.scrollY;
+                    const isAlreadyActive = item.classList.contains('is-active');
+                    // Collapse all
+                    mobileNavItems.forEach((n) => {
+                        n.classList.remove('is-active');
+                        n.querySelector('.alm-nav-icon').textContent = '+';
+                    });
+                    // Expand clicked if not already open
+                    if (!isAlreadyActive) {
+                        item.classList.add('is-active');
+                        item.querySelector('.alm-nav-icon').textContent = '-';
+                    }
+                    // Restore scroll — prevent page jump
+                    item.blur();
+                    requestAnimationFrame(() => {
+                        window.scrollTo({ top: savedScroll, behavior: 'instant' });
+                    });
+                }, true);
+            });
         });
     </script>
 
