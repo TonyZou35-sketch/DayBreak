@@ -682,6 +682,11 @@
     color: #2E302D;
 }
 
+/* Inline description (mobile accordion only — hidden on desktop) */
+.alm-nav-inline-desc {
+    display: none;
+}
+
 /* Right Column (Images & Text Stack) */
 .alm-pillars-right {
     width: 40%;
