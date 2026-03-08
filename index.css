@@ -1379,6 +1379,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Inherit parent card color to prevent black flash before video loads on mobile */
+  background-color: inherit;
 }
 
 .seamless-video video {
@@ -1391,6 +1393,8 @@ body {
   transform: translate(-50%, -50%);
   transition: opacity 1s ease-in-out;
   /* 1-second crossfade duration matches JS */
+  background-color: transparent;
+  /* prevent black pre-load background on mobile */
 }
 
 .seamless-video video.is-playing {
